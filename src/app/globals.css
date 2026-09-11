@@ -486,12 +486,36 @@ h3 {
 }
 .footer-meta {
   display: flex;
+  align-items: center;
   gap: 1.2rem;
   color: var(--muted);
   font:
     0.65rem "Courier New",
     monospace;
   text-transform: uppercase;
+}
+.back-to-top {
+  display: grid;
+  width: 2.7rem;
+  height: 2.7rem;
+  margin-left: 0.5rem;
+  border: 1px solid var(--coral);
+  border-radius: 50%;
+  color: var(--coral);
+  font: 1.15rem/1 "Trebuchet MS", sans-serif;
+  place-items: center;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+.back-to-top:hover {
+  color: var(--surface);
+  background: var(--coral);
+  transform: translateY(-0.2rem);
+}
+.back-to-top::after {
+  display: none;
 }
 .reveal {
   animation: reveal 0.7s ease both;

@@ -1,12 +1,6 @@
 import { resumeData } from "@/data/resume-data";
 import HeroGlow from "./hero-glow";
 
-const navItems = [
-  ["About", "about"],
-  ["Experience", "experience"],
-  ["Selected work", "projects"],
-] as const;
-
 export default function Home() {
   return (
     <main className="site-shell">
@@ -16,21 +10,6 @@ export default function Home() {
         <span className="rail-label">Curriculum vitae / 2026</span>
       </aside>
       <div className="resume-page">
-        <nav className="top-nav">
-          <a href="#top" className="brand">
-            LT / portfolio
-          </a>
-          <div className="nav-links">
-            {navItems.map(([label, id]) => (
-              <a key={id} href={`#${id}`}>
-                {label}
-              </a>
-            ))}
-          </div>
-          <a className="print-link" href={`mailto:${resumeData.email}`}>
-            Let&apos;s talk <span aria-hidden="true">↗</span>
-          </a>
-        </nav>
         <HeroGlow>
           <div>
             <p className="eyebrow">
@@ -186,6 +165,9 @@ export default function Home() {
                 {item.label}
               </a>
             ))}
+            <a className="back-to-top" href="#top" aria-label="Back to top">
+              <span aria-hidden="true">↑</span>
+            </a>
           </div>
         </footer>
       </div>
