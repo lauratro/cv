@@ -164,8 +164,19 @@ export default function Home() {
         </div>
         <footer className="site-footer">
           <div>
-            <span className="footer-prompt">Have a good project?</span>
-            <a href={`mailto:${resumeData.email}`}>Start a conversation ↗</a>
+            <h2>Download CV</h2>
+            <a
+              href="/Laura-Tronchin-CV-ATS-EN.pdf"
+              download="Laura-Tronchin-CV-EN.pdf"
+            >
+              EN
+            </a>{" "}
+            <a
+              href="/Laura-Tronchin-Lebenslauf-ATS-DE.pdf"
+              download="Laura-Tronchin-Lebenslauf-DE.pdf"
+            >
+              DE
+            </a>{" "}
           </div>
           <div className="footer-meta">
             <span>{resumeData.phone}</span>
