@@ -1,4 +1,5 @@
 import { resumeData } from "@/data/resume-data";
+import HeroGlow from "./hero-glow";
 
 const navItems = [
   ["About", "about"],
@@ -30,7 +31,7 @@ export default function Home() {
             Let&apos;s talk <span aria-hidden="true">↗</span>
           </a>
         </nav>
-        <section id="top" className="hero-section reveal">
+        <HeroGlow>
           <div>
             <p className="eyebrow">
               <span className="status-dot" /> {resumeData.availability}
@@ -47,7 +48,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </section>
+        </HeroGlow>
         <div className="content-grid">
           <section id="about" className="content-section reveal">
             <div>
