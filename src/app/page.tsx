@@ -39,19 +39,20 @@ export default function Home() {
             <p className="hero-role">{resumeData.role}</p>
           </div>
           <div className="hero-aside">
-            <span className="hero-number">01</span>
-            <p>{resumeData.summary}</p>
+            <div className="social-col">
+              {resumeData.social.map((item) => (
+                <a href={item.href} key={item.label}>
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
         </section>
         <div className="content-grid">
           <section id="about" className="content-section reveal">
-            <div className="section-index">A / 01</div>
             <div>
               <h2>About</h2>
-              <p className="large-copy">
-                Good work lives where clarity meets character. I help teams find
-                that place.
-              </p>
+              <p>{resumeData.summary}</p>
               <div className="contact-row">
                 <a href={`mailto:${resumeData.email}`}>{resumeData.email} ↗</a>
                 <span>{resumeData.location}</span>
@@ -59,7 +60,6 @@ export default function Home() {
             </div>
           </section>
           <section id="experience" className="content-section reveal">
-            <div className="section-index">B / 02</div>
             <div className="section-body">
               <h2>Experience</h2>
               <div className="timeline-list">
@@ -84,39 +84,57 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className="content-section reveal">
-            <div className="section-index">C / 03</div>
-            <div className="section-body split-section">
-              <div>
-                <h2>Education</h2>
-                <div className="education-list">
-                  {resumeData.education.map((item) => (
-                    <div key={item.school}>
-                      <p className="period">{item.period}</p>
-                      <p>
-                        <strong>{item.school}</strong>
-                        <br />
-                        {item.degree}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+          <section className="content-section details-section reveal">
+            <div className="section-body">
+              <h2>Education</h2>
+              <div className="education-list">
+                {resumeData.education.map((item) => (
+                  <div key={item.school}>
+                    <p className="period">{item.period}</p>
+                    <p>
+                      <strong>{item.school}</strong>
+                      <br />
+                      {item.degree}
+                    </p>
+                  </div>
+                ))}
               </div>
-              <div>
-                <h2>Tools &amp; skills</h2>
-                <ul className="skill-cloud">
-                  {resumeData.skills.map((skill) => (
-                    <li key={skill}>{skill}</li>
-                  ))}
-                </ul>
-              </div>
+            </div>
+          </section>
+          <section className="content-section details-section reveal">
+            <div className="section-body">
+              <h2>Tools &amp; skills</h2>
+              <ul className="skill-cloud">
+                {resumeData.skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
+          <section className="content-section details-section reveal">
+            <div className="section-body">
+              <h2>Languages</h2>
+              <ul className="detail-list">
+                {resumeData.languages.map((language) => (
+                  <li key={language}>{language}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
+          <section className="content-section details-section reveal">
+            <div className="section-body">
+              <h2>Certifications</h2>
+              <ul className="detail-list">
+                {resumeData.certifications.map((certification) => (
+                  <li key={certification}>{certification}</li>
+                ))}
+              </ul>
             </div>
           </section>
           <section
             id="projects"
             className="content-section projects-section reveal"
           >
-            <div className="section-index">D / 04</div>
             <div className="section-body">
               <div className="section-heading">
                 <h2>Selected work</h2>
@@ -129,7 +147,6 @@ export default function Home() {
                     href={project.href}
                     key={project.name}
                   >
-                    <span className="project-number">{project.number}</span>
                     <h3>
                       {project.name} <span aria-hidden="true">↗</span>
                     </h3>
