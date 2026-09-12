@@ -188,10 +188,9 @@ p {
   margin-top: 0;
 }
 h1 {
-  max-width: 8ch;
   margin-bottom: 1.2rem;
   font:
-    500 clamp(4rem, 12vw, 6.4rem)/0.78 Georgia,
+    500 clamp(4rem, 12vw, 2rem)/0.78 Georgia,
     serif;
   letter-spacing: -0.08em;
   animation: hero-title-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -215,6 +214,7 @@ h1 {
 }
 .hero-aside p,
 .description,
+.experience-details,
 .project-card p {
   color: var(--muted);
   line-height: 1.65;
@@ -236,7 +236,6 @@ h1 {
 }
 #about > div > p,
 .description {
-  max-width: 42rem;
   color: var(--muted);
   font-size: 1rem;
   font-weight: 400;
@@ -279,17 +278,29 @@ h2 {
 .contact-row span {
   color: var(--coral);
 }
+.profile-picture {
+  width: 12rem;
+  height: 12rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  border: 1px solid var(--coral);
+}
 .social-col {
   display: flex;
   flex-direction: column;
 }
-.social-col a {
+.social-row {
+  display: flex;
+  flex-direction: row;
+}
+.social-row a {
   color: var(--muted);
   transition:
     color 0.2s ease,
     transform 0.2s ease;
 }
-.social-col a:hover {
+.social-row a:hover {
   color: var(--coral);
   transform: translateX(0.2rem);
 }
@@ -325,6 +336,20 @@ h3 {
 .description {
   max-width: 32rem;
   margin-bottom: 1.1rem;
+}
+.experience-details {
+  max-width: 44rem;
+  margin: 0 0 1.35rem;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+.experience-details li + li {
+  margin-top: 0.65rem;
+}
+.experience-details li::marker {
+  color: var(--coral);
 }
 .tag-list,
 .skill-cloud {
@@ -502,7 +527,9 @@ h3 {
   border: 1px solid var(--coral);
   border-radius: 50%;
   color: var(--coral);
-  font: 1.15rem/1 "Trebuchet MS", sans-serif;
+  font:
+    1.15rem/1 "Trebuchet MS",
+    sans-serif;
   place-items: center;
   transition:
     color 0.2s ease,

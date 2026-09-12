@@ -1,6 +1,6 @@
 import { resumeData } from "@/data/resume-data";
 import HeroGlow from "./hero-glow";
-
+import Image from "next/image";
 export default function Home() {
   return (
     <main className="site-shell">
@@ -9,25 +9,30 @@ export default function Home() {
         <span className="rail-line" />
         <span className="rail-label">Curriculum vitae / 2026</span>
       </aside>
-      <div className="resume-page">
-        <HeroGlow>
+      <div className="resume-page pt-8 w-full">
+        <div className="mt-10 flex flex-row  justify-between">
           <div>
-            <p className="eyebrow">
-              <span className="status-dot" /> {resumeData.availability}
-            </p>
             <h1>{resumeData.name}</h1>
             <p className="hero-role">{resumeData.role}</p>
-          </div>
-          <div className="hero-aside">
-            <div className="social-col">
+            <div className="social-row">
               {resumeData.social.map((item) => (
-                <a href={item.href} key={item.label}>
-                  {item.label}
-                </a>
+                <span className={"mr-4"} key={item.label}>
+                  <a href={item.href} key={item.label}>
+                    {item.label}
+                  </a>
+                </span>
               ))}
             </div>
           </div>
-        </HeroGlow>
+          <Image
+            className="profile-picture"
+            src="/profile-pic-small.png"
+            alt="Laura Tronchin"
+            width={192}
+            height={192}
+          />
+        </div>
+        <div className="hero-aside"></div>
         <div className="content-grid">
           <section id="about" className="content-section reveal">
             <div>
@@ -52,7 +57,11 @@ export default function Home() {
                     <div>
                       <h3>{item.role}</h3>
                       <p className="company">{item.company}</p>
-                      <p className="description">{item.description}</p>
+                      <ul className="experience-details">
+                        {item.details.map((detail) => (
+                          <li key={detail}>{detail}</li>
+                        ))}
+                      </ul>
                       <ul className="tag-list">
                         {item.highlights.map((tag) => (
                           <li key={tag}>{tag}</li>

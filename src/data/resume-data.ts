@@ -17,8 +17,17 @@ export const resumeData = {
       period: "07/2022 — 06/2026",
       company: "The Key Technology GmbH · Berlin",
       role: "Full Stack Developer",
-      description:
+      details: [
         "Developed and maintained scalable product features across 6 web applications and 2 mobile apps within a complex, interconnected software ecosystem.",
+        "Built frontend functionality using React and React Native, translating product and business requirements into reliable, user-facing solutions.",
+        "Designed and implemented APIs and data structures with MongoDB and GraphQL, including indexing, performance optimization, and migration strategies for existing data.",
+        "Contributed to backend services and integrations, including Scala-based systems and internal and external API workflows supporting end-to-end product functionality.",
+        "Improved maintainability and long-term scalability through refactoring, iterative enhancements, and technical ownership of interconnected applications.",
+        "Built and optimized reusable UI components with strong attention to responsive design, usability, and consistent user experience.",
+        "Implemented and maintained unit tests for backend components to improve reliability, code quality, and maintainability.",
+        "Maintained and improved GitHub Actions CI/CD workflows, supporting automated deployments and release management for development and production environments.",
+        "Collaborated closely with product stakeholders, clients, and cross-functional teams to define requirements and deliver practical technical solutions.",
+      ],
       highlights: [
         "React / React Native",
         "Scala / MongoDB",
@@ -30,32 +39,37 @@ export const resumeData = {
       period: "12/2021 — 05/2022",
       company: "Kooku Recruiting Partners · Berlin",
       role: "Frontend Web Developer Intern",
-      description:
-        "Implemented the frontend interface of the company application using Vue.js and Tailwind CSS, collaborating with design and backend teams in an agile environment.",
+      details: [
+        "Implemented the frontend interface of the company's application using Vue.js and Tailwind CSS.",
+        "Collaborated closely with the design and backend teams in an agile environment.",
+      ],
       highlights: ["Vue.js", "Tailwind CSS", "Agile collaboration"],
     },
     {
       period: "09/2020 — 02/2021",
       company: "Conjuro Digital Marketing Agency · Berlin",
       role: "Freelance Web Designer",
-      description:
+      details: [
         "Developed and maintained company websites using WordPress and CSS.",
+      ],
       highlights: ["WordPress", "CSS", "Web design"],
     },
     {
       period: "02/2019 — 01/2020",
       company: "Plus Hostel and Hotel · Berlin",
       role: "Reservation Manager",
-      description:
+      details: [
         "Managed the booking software and supported community management.",
+      ],
       highlights: ["Booking software", "Community management"],
     },
     {
       period: "03/2015 — 01/2019",
       company: "Weinwirtschaft at Akademie der Künste · Berlin",
       role: "Restaurant Supervisor & Service Staff",
-      description:
+      details: [
         "Provided customer service, handled cash transactions, and supported event coordination.",
+      ],
       highlights: ["Customer service", "Event coordination"],
     },
   ],
