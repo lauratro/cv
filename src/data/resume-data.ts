@@ -1,3 +1,5 @@
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+
 export const resumeData = {
   name: "Laura Tronchin",
   initials: "LT",
@@ -9,8 +11,16 @@ export const resumeData = {
   summary:
     "Full Stack Developer with 4+ years of experience building production web and mobile applications in complex product environments. Strong experience with React, TypeScript, scalable frontend architectures, API design, and backend integrations.",
   social: [
-    { label: "LinkedIn", href: "https://linkedin.com/in/laura-tronchin" },
-    { label: "GitHub", href: "https://github.com/lauratro" },
+    {
+      label: "LinkedIn",
+      href: "https://linkedin.com/in/laura-tronchin",
+      icon: FaLinkedin,
+    },
+    {
+      label: "GitHub",
+      href: "https://github.com/lauratro",
+      icon: FaGithub,
+    },
   ],
   experience: [
     {

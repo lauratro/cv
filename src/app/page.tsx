@@ -1,28 +1,21 @@
 import { resumeData } from "@/data/resume-data";
 import HeroGlow from "./hero-glow";
 import Image from "next/image";
+import { SocialMedia } from "./social-media/social-media";
+import { Aside } from "./aside/aside";
+import { NameRoleSection } from "./name-role/name-role-section";
+import { PdfVersions } from "./pdf-versions/pdf-versions";
+
 export default function Home() {
   return (
     <main className="site-shell">
-      <aside className="side-rail" aria-label="Resume navigation">
-        <span className="rail-mark">{resumeData.initials}</span>
-        <span className="rail-line" />
-        <span className="rail-label">Curriculum vitae / 2026</span>
-      </aside>
+      <Aside />
       <div className="resume-page pt-8 w-full">
         <div className="mt-10 flex flex-row  justify-between">
           <div>
-            <h1>{resumeData.name}</h1>
-            <p className="hero-role">{resumeData.role}</p>
-            <div className="social-row">
-              {resumeData.social.map((item) => (
-                <span className={"mr-4"} key={item.label}>
-                  <a href={item.href} key={item.label}>
-                    {item.label}
-                  </a>
-                </span>
-              ))}
-            </div>
+            <NameRoleSection />
+            <SocialMedia />
+            <PdfVersions />
           </div>
           <Image
             className="profile-picture"

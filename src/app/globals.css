@@ -295,15 +295,29 @@ h2 {
   display: flex;
   flex-direction: row;
 }
-.social-row a {
+.social-row,
+.social-item,
+p,
+a {
   color: var(--muted);
   transition:
     color 0.2s ease,
     transform 0.2s ease;
 }
-.social-row a:hover {
+.social-item:hover,
+p:hover {
   color: var(--coral);
   transform: translateX(0.2rem);
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+}
+
+.social-icon {
+  size: 12px;
+  margin-right: 5px;
 }
 .timeline-list {
   border-top: 1px solid var(--line);
