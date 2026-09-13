@@ -1,0 +1,267 @@
+#!/usr/bin/env python3
+"""
+Measured ATS-lens harness for cv-and-human's red-team pass.
+
+This drives the *measuring* half of the red team's ATS lens: it scores a CV through
+a real ATS critic N times and reports the distribution (median / min / range), so
+push-back targets the typical outcome rather than a single lucky run. The red team
+*finds* weaknesses; the tailor *fixes* the truthful ones — this script only measures.
+
+Design notes:
+- The critic is non-deterministic, so a single score is meaningless. We always
+  sample N>=5 and compare distributions.
+- The scorer is pluggable. Provide a shell command that takes a CV path and prints
+  the critic's JSON to stdout (e.g. a local `hiring-agent` invocation), or use the
+  built-in stub for testing the harness logic without a model backend.
+
+Usage:
+  # Real critic. Point --scorer-cmd at a small adapter that prints {"total": N} to
+  # stdout (interviewstreet/hiring-agent's own score.py prints a human report, not
+  # JSON). PREFERRED adapter converts the PDF to markdown UPSTREAM (deterministic,
+  # via markitdown) and feeds the text straight to the scorer — 1 LLM call, not ~7;
+  # see references/red-team.md, "Wiring a real hiring-agent scorer":
+  python ats_adversarial_loop.py score --cv cv.pdf \\
+      --scorer-cmd "python /path/hiring-agent/score_md.py {cv}" --runs 10
+
+  # Harness self-test with the deterministic-ish stub:
+  python ats_adversarial_loop.py selftest
+
+The scorer is non-deterministic: an occasional run yields malformed output and is
+skipped (reported as "N failed/skipped"), not fatal. Raise --runs if many fail.
+Below --min-successful (default 5) valid runs it refuses to report a median — a
+distribution over a handful of survivors is noise, not signal.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import random
+import shlex
+import statistics
+import subprocess
+import sys
+from collections.abc import Callable
+from dataclasses import asdict, dataclass, field
+
+
+@dataclass
+class Distribution:
+    runs: list[float] = field(default_factory=list)
+    failures: int = 0  # runs that errored (malformed scorer output, flaky model call)
+
+    @property
+    def n(self) -> int:
+        return len(self.runs)
+
+    @property
+    def median(self) -> float:
+        return statistics.median(self.runs) if self.runs else float("nan")
+
+    @property
+    def minimum(self) -> float:
+        return min(self.runs) if self.runs else float("nan")
+
+    @property
+    def maximum(self) -> float:
+        return max(self.runs) if self.runs else float("nan")
+
+    def summary(self) -> str:
+        if not self.runs:
+            return f"no successful runs ({self.failures} failed)"
+        tail = f" ({self.failures} failed/skipped)" if self.failures else ""
+        return (f"median {self.median:.1f}, range {self.minimum:.0f}-"
+                f"{self.maximum:.0f} over {self.n} runs{tail}")
+
+
+def score_n(cv_path: str, scorer: Callable[[str], float], runs: int) -> Distribution:
+    """Score one CV `runs` times via the pluggable scorer.
+
+    Resilient by design: we are sampling a *non-deterministic* critic, so an
+    occasional failed run (malformed model output, a flaky call) is expected and
+    must not abort the batch. A failed run is counted and skipped; we raise only if
+    *every* run failed (no distribution to report)."""
+    dist = Distribution()
+    for i in range(runs):
+        try:
+            dist.runs.append(float(scorer(cv_path)))
+        except Exception as e:  # noqa: BLE001 — any scorer failure is a skippable sample
+            dist.failures += 1
+            print(f"  run {i + 1}/{runs} failed ({type(e).__name__}: "
+                  f"{str(e)[:120]}); skipping", file=sys.stderr)
+    if not dist.runs:
+        raise RuntimeError(
+            f"all {runs} scoring runs failed — no distribution to report. "
+            f"Check the scorer command and model backend.")
+    return dist
+
+
+def subprocess_scorer(scorer_cmd: str) -> Callable[[str], float]:
+    """Build a scorer that runs a shell command and extracts a numeric total.
+
+    `{cv}` in the command is replaced with the CV path. The command must print
+    JSON to stdout; we look for a numeric 'total'/'total_score'/'overall' field,
+    else the last number on the last non-empty line.
+
+    NOT a shell. The command is split into argv once, and `{cv}` is substituted
+    into the resulting ARGUMENTS rather than into the command string. That makes
+    the path a single argv element, so a CV filename containing shell
+    metacharacters -- `cv; rm -rf ~.md` is a legal filename -- is passed through
+    as text instead of executed. The previous version interpolated the path into
+    a string and ran it with `shell=True`, which turned any filename into
+    arbitrary code. Shell syntax in the command itself (pipes, redirection,
+    globs) is therefore not supported; it never was documented, and supporting
+    it would put the hole straight back.
+    """
+    argv_template = shlex.split(scorer_cmd)
+    if not argv_template:
+        raise ValueError("--scorer-cmd is empty")
+
+    def _scorer(cv_path: str) -> float:
+        argv = [part.replace("{cv}", cv_path) for part in argv_template]
+        out = subprocess.run(argv, capture_output=True, text=True,
+                             timeout=600, check=False)
+        text = out.stdout.strip()
+        try:
+            data = json.loads(text)
+            for k in ("total", "total_score", "overall", "overall_score", "score"):
+                if isinstance(data, dict) and k in data:
+                    return float(data[k])
+        except json.JSONDecodeError:
+            pass
+        # Fallback: last number on the last non-empty line.
+        for line in reversed([ln for ln in text.splitlines() if ln.strip()]):
+            toks = [t for t in line.replace(":", " ").split() if _isnum(t)]
+            if toks:
+                return float(toks[-1])
+        raise ValueError(f"Could not parse a score from scorer output:\n{text[:500]}")
+    return _scorer
+
+
+def _isnum(t: str) -> bool:
+    try:
+        float(t)
+        return True
+    except ValueError:
+        return False
+
+
+def improved(old: Distribution, new: Distribution, eps: float = 2.0) -> bool:
+    """A revision is a real improvement only if the median rises by more than the
+    noise band AND the worst-case floor does not drop materially."""
+    if old.n == 0:
+        return True
+    median_gain = new.median - old.median
+    floor_drop = old.minimum - new.minimum
+    return median_gain > eps and floor_drop <= eps
+
+
+def plateaued(history: list[Distribution], eps: float = 2.0) -> bool:
+    """Stop when the last two iterations' medians differ by < eps."""
+    if len(history) < 2:
+        return False
+    return abs(history[-1].median - history[-2].median) < eps
+
+
+# --------------------------------------------------------------------------- #
+# Built-in stub critic for harness self-testing (no model backend required).
+# Models a noisy critic whose mean depends on a few legitimate CV signals.
+# --------------------------------------------------------------------------- #
+def stub_scorer_factory(signals: dict) -> Callable[[str], float]:
+    """signals: dict of truthful CV properties → a base score, then add noise.
+    Mirrors hiring-agent's real levers so the harness logic is exercised."""
+    base = 40.0
+    base += 25 if signals.get("real_open_source") else 0
+    base += 15 if signals.get("complex_projects") else 0
+    base += 10 if signals.get("all_projects_have_links") else 0
+    base += 5 if signals.get("portfolio_url") else 0
+    base -= 8 if signals.get("tutorial_projects") else 0
+
+    def _scorer(_cv_path: str) -> float:
+        # +/- noise reproduces the documented non-determinism.
+        return max(0.0, min(120.0, base + random.gauss(0, 6)))
+    return _scorer
+
+
+def selftest() -> int:
+    """Exercise the harness logic end-to-end with the stub, no model needed."""
+    random.seed(0)
+    print("== adversarial harness self-test ==")
+
+    # v0: weak CV (linkless tutorial projects, no portfolio).
+    v0_signals = {"real_open_source": False, "complex_projects": False,
+                  "all_projects_have_links": False, "portfolio_url": False,
+                  "tutorial_projects": True}
+    # v1: truthful improvements (surfaced real OSS, added real links + portfolio,
+    # dropped toy projects).
+    v1_signals = {"real_open_source": True, "complex_projects": True,
+                  "all_projects_have_links": True, "portfolio_url": True,
+                  "tutorial_projects": False}
+
+    history: list[Distribution] = []
+    for label, sig in (("v0", v0_signals), ("v1", v1_signals)):
+        dist = score_n("dummy.pdf", stub_scorer_factory(sig), runs=10)
+        history.append(dist)
+        print(f"  {label}: {dist.summary()}")
+
+    assert history[0].n == 10, "expected 10 runs"
+    assert improved(history[0], history[1]), "v1 should beat v0 on the distribution"
+    assert not plateaued(history), "v0->v1 should not look plateaued"
+    # A no-op revision should look plateaued and not 'improved'.
+    same = score_n("dummy.pdf", stub_scorer_factory(v1_signals), runs=10)
+    assert plateaued([history[1], same]), "identical signals should plateau"
+    assert not improved(history[1], same), "no real change should not count as improvement"
+    print("  median/min/range, improvement gate, and plateau detection: OK")
+    print("PASS")
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = ap.add_subparsers(dest="cmd", required=True)
+
+    s = sub.add_parser("score", help="score a CV N times via a real critic")
+    s.add_argument("--cv", required=True)
+    s.add_argument("--scorer-cmd", required=True,
+                   help="command and arguments (NOT a shell line -- no pipes or "
+                        "redirection); '{cv}' is replaced with the CV path; "
+                        "must print the critic's JSON/score to stdout")
+    s.add_argument("--runs", type=int, default=10)
+    s.add_argument("--min-successful", type=int, default=5,
+                   help="floor on SUCCESSFUL runs; below this we refuse to report a "
+                        "median. A median over a handful of survivors (e.g. 2 of 10) "
+                        "is noise reported as signal — the skill's own first principle "
+                        "forbids it. Default 5 matches the N>=5 guidance; lower it "
+                        "explicitly (e.g. 1) only for a deliberate smoke test.")
+    s.add_argument("--out", default=None, help="optional JSON history output path")
+
+    sub.add_parser("selftest", help="run harness logic self-test (no model needed)")
+
+    args = ap.parse_args()
+    if args.cmd == "selftest":
+        return selftest()
+
+    if args.cmd == "score":
+        scorer = subprocess_scorer(args.scorer_cmd)
+        dist = score_n(args.cv, scorer, args.runs)
+        if args.out:
+            with open(args.out, "w") as f:
+                json.dump(asdict(dist), f, indent=2)
+            print(f"wrote {args.out}")
+        # The min-successful guard: refuse to quote a median computed over too few
+        # survivors. Reporting one anyway is exactly "noise reported as signal".
+        if dist.n < args.min_successful:
+            print(f"INSUFFICIENT: only {dist.n} successful run(s) of {args.runs} "
+                  f"({dist.failures} failed) — below the --min-successful="
+                  f"{args.min_successful} floor. Refusing to report a median: a "
+                  f"distribution over so few survivors is noise, not signal. Raise "
+                  f"--runs, fix the scorer, or lower --min-successful only for a "
+                  f"deliberate smoke test.")
+            return 2
+        print(dist.summary())
+        return 0
+    return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
