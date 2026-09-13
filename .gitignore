@@ -19,6 +19,9 @@
 /claude-skills/
 /cv-site/
 
+# private CV evidence and working notes
+/cv-work/
+
 # misc
 .DS_Store
 *.pem
