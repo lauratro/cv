@@ -5,6 +5,7 @@ import { SocialMedia } from "./social-media/social-media";
 import { Aside } from "./aside/aside";
 import { NameRoleSection } from "./name-role/name-role-section";
 import { PdfVersions } from "./pdf-versions/pdf-versions";
+import { BackToTop } from "./back-to-top/back-to-top";
 
 export default function Home() {
   return (
@@ -12,15 +13,9 @@ export default function Home() {
       <Aside />
       <div className="resume-page pt-8 w-full">
         <div className="mt-10 flex flex-row  justify-between">
-          <div
-            className="flex flex-col justify-between
-"
-          >
+          <div className="flex flex-col justify-between">
             <NameRoleSection />
-            <div
-              className="flex flex-col md:flex-row items-center
- "
-            >
+            <div className="flex flex-col md:flex-row items-center">
               <SocialMedia />
               <PdfVersions />
             </div>
@@ -48,7 +43,7 @@ export default function Home() {
               <h2>About</h2>
               <p>{resumeData.summary}</p>
               <div className="contact-row">
-                <a href={`mailto:${resumeData.email}`}>{resumeData.email} ↗</a>
+                <a href={`mailto:${resumeData.email}`}>{resumeData.email} </a>
                 <span>{resumeData.location}</span>
               </div>
             </div>
@@ -124,9 +119,7 @@ export default function Home() {
             className="content-section projects-section reveal"
           >
             <div className="section-body">
-              <div className="section-heading">
-                <h2>Projects</h2>
-              </div>
+              <h2>Projects</h2>
               <div className="project-grid">
                 {resumeData.projects.map((project) => (
                   <a
@@ -135,7 +128,7 @@ export default function Home() {
                     key={project.name}
                   >
                     <h3>
-                      {project.name} <span aria-hidden="true">↗</span>
+                      {project.name} <span aria-hidden="true"></span>
                     </h3>
                     <p>{project.description}</p>
                     <ul className="tag-list">
@@ -150,32 +143,21 @@ export default function Home() {
           </section>
         </div>
         <footer className="site-footer">
-          <div>
-            <h2>Download CV</h2>
-            <a
-              href="/Laura-Tronchin-CV-ATS-EN.pdf"
-              download="Laura-Tronchin-CV-EN.pdf"
-            >
-              EN
-            </a>{" "}
-            <a
-              href="/Laura-Tronchin-Lebenslauf-ATS-DE.pdf"
-              download="Laura-Tronchin-Lebenslauf-DE.pdf"
-            >
-              DE
-            </a>{" "}
-          </div>
           <div className="footer-meta">
-            <span>{resumeData.phone}</span>
+            <a className="print-link" href={`mailto:${resumeData.email}`}>
+              {resumeData.email}
+            </a>
+
             {resumeData.social.map((item) => (
-              <a href={item.href} key={item.label}>
+              <a className="print-link" href={item.href} key={item.label}>
                 {item.label}
               </a>
             ))}
-            <a className="back-to-top" href="#top" aria-label="Back to top">
+            {/*     <a className="back-to-top" href="#top" aria-label="Back to top">
               <span aria-hidden="true">↑</span>
-            </a>
+            </a> */}
           </div>
+          <BackToTop />
         </footer>
       </div>
     </main>
