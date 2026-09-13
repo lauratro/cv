@@ -153,9 +153,6 @@ export default function Home() {
                 {item.label}
               </a>
             ))}
-            {/*     <a className="back-to-top" href="#top" aria-label="Back to top">
-              <span aria-hidden="true">↑</span>
-            </a> */}
           </div>
           <BackToTop />
         </footer>

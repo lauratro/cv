@@ -15,6 +15,10 @@
 # production
 /build
 
+# local reference repositories (never commit)
+/claude-skills/
+/cv-site/
+
 # misc
 .DS_Store
 *.pem
