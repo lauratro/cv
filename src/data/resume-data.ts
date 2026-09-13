@@ -113,15 +113,13 @@ export const resumeData = {
   ],
   languages: [
     "Italian · Native",
-    "English · Fluent",
-    "German · Professional working proficiency (B2)",
-    "Spanish · Intermediate",
+    "English · B2",
+    "German · B2",
+    "Spanish · B1",
   ],
   certifications: [
-    "React · Codecademy",
-    "JavaScript ES6–ES9 · Udemy",
-    "JavaScript · Codecademy",
     "Web 2.0 · Business Trend Academy Berlin",
+    "Online Marketing Manager · Business Trend Academy Berlin",
   ],
   projects: [
     {

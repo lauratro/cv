@@ -28,11 +28,19 @@ export default function Home() {
             className="profile-picture"
             src="/profile-pic-small.png"
             alt="Laura Tronchin"
-            width={192}
-            height={192}
+            width={170}
+            height={170}
           />
         </div>
-        <div className="hero-aside"></div>
+        <div className="language-container">
+          <div>
+            {resumeData.languages.map((language) => (
+              <span className="mr-4" key="language">
+                {language}
+              </span>
+            ))}
+          </div>
+        </div>
         <div className="content-grid">
           <section id="about" className="content-section reveal">
             <div>
@@ -102,16 +110,6 @@ export default function Home() {
           </section>
           <section className="content-section details-section reveal">
             <div className="section-body">
-              <h2>Languages</h2>
-              <ul className="detail-list">
-                {resumeData.languages.map((language) => (
-                  <li key={language}>{language}</li>
-                ))}
-              </ul>
-            </div>
-          </section>
-          <section className="content-section details-section reveal">
-            <div className="section-body">
               <h2>Certifications</h2>
               <ul className="detail-list">
                 {resumeData.certifications.map((certification) => (
@@ -126,8 +124,7 @@ export default function Home() {
           >
             <div className="section-body">
               <div className="section-heading">
-                <h2>Selected work</h2>
-                <span>Small things, thoughtfully made.</span>
+                <h2>Projects</h2>
               </div>
               <div className="project-grid">
                 {resumeData.projects.map((project) => (
