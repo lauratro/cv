@@ -12,10 +12,18 @@ export default function Home() {
       <Aside />
       <div className="resume-page pt-8 w-full">
         <div className="mt-10 flex flex-row  justify-between">
-          <div>
+          <div
+            className="flex flex-col justify-between
+"
+          >
             <NameRoleSection />
-            <SocialMedia />
-            <PdfVersions />
+            <div
+              className="flex flex-col md:flex-row items-center
+ "
+            >
+              <SocialMedia />
+              <PdfVersions />
+            </div>
           </div>
           <Image
             className="profile-picture"

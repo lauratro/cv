@@ -6,14 +6,14 @@ export const SocialMedia = () => {
         const Icon = item.icon;
 
         return (
-          <span className="mr-4" key={item.label}>
+          <div className="social-items mr-4" key={item.label}>
             <a href={item.href}>
               <div className="social-item">
                 <Icon className="social-icon" />
                 <p className="m-0 p-0">{item.label}</p>
               </div>
             </a>
-          </span>
+          </div>
         );
       })}
     </div>

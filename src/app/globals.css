@@ -8,7 +8,7 @@
   --surface: #faf8f2;
   --muted: #4a4a4a;
   --line: #cfc9bd;
-  --coral: #a8795a;
+  --coral: #035462;
   --soft-coral: #e6d5c7;
   --accent-rgb: 168, 121, 90;
 }
@@ -132,7 +132,7 @@ a {
 }
 .print-link {
   color: var(--coral);
-  font-weight: 700;
+  font-weight: 400;
 }
 .hero-section {
   --glow-x: 82%;
@@ -295,17 +295,18 @@ h2 {
   display: flex;
   flex-direction: row;
 }
+.social-item p,
+.social-icon {
+  color: inherit;
+}
 .social-row,
-.social-item,
-p,
-a {
+.social-items {
   color: var(--muted);
   transition:
     color 0.2s ease,
     transform 0.2s ease;
 }
-.social-item:hover,
-p:hover {
+.social-items:hover {
   color: var(--coral);
   transform: translateX(0.2rem);
 }
