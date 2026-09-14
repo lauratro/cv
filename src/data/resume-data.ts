@@ -161,8 +161,14 @@ export const resumeData = {
     "Spanish · B1",
   ],
   certifications: [
-    "Web 2.0 · Business Trend Academy Berlin",
-    "Online Marketing Manager · Business Trend Academy Berlin",
+    {
+      name: "Web 2.0",
+      issuer: "Business Trend Academy Berlin",
+    },
+    {
+      name: "Online Marketing Manager",
+      issuer: "Business Trend Academy Berlin",
+    },
   ],
   projects: [
     {

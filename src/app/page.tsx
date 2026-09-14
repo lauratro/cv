@@ -6,6 +6,7 @@ import { Aside } from "./aside/aside";
 import { NameRoleSection } from "./name-role/name-role-section";
 import { PdfVersions } from "./pdf-versions/pdf-versions";
 import { BackToTop } from "./back-to-top/back-to-top";
+import { Award } from "lucide-react";
 
 export default function Home() {
   return (
@@ -154,11 +155,22 @@ export default function Home() {
           <section className="content-section details-section reveal">
             <div className="section-body">
               <h2>Certifications</h2>
-              <ul className="detail-list">
+              <div className="certification-grid">
                 {resumeData.certifications.map((certification) => (
-                  <li key={certification}>{certification}</li>
+                  <article
+                    className="certification-card"
+                    key={certification.name}
+                  >
+                    <span className="certification-icon" aria-hidden="true">
+                      <Award size={20} strokeWidth={1.7} />
+                    </span>
+                    <div>
+                      <h3>{certification.name}</h3>
+                      <p>{certification.issuer}</p>
+                    </div>
+                  </article>
                 ))}
-              </ul>
+              </div>
             </div>
           </section>
           <section
@@ -175,7 +187,7 @@ export default function Home() {
                     key={project.name}
                   >
                     <h3>
-                      {project.name} <span aria-hidden="true"></span>
+                      {project.name} <span aria-hidden="true">↗</span>
                     </h3>
                     <p>{project.description}</p>
                     <ul className="tag-list">
