@@ -1,10 +1,8 @@
-import { resumeData } from "@/data/resume-data";
-
-export const NameRoleSection = () => {
+export const NameRoleSection = ({ name, role }: { name: string; role: string }) => {
   return (
     <div>
-      <h1>{resumeData.name}</h1>
-      <p className="hero-role mt-2">{resumeData.role}</p>{" "}
+      <h1>{name}</h1>
+      <p className="hero-role mt-2">{role}</p>{" "}
     </div>
   );
 };

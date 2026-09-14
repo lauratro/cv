@@ -180,3 +180,160 @@ export const resumeData = {
     },
   ],
 } as const;
+
+export type ResumeData = typeof resumeData;
+
+export const resumeDataDe = {
+  ...resumeData,
+  role: "Produktorientierte Full-Stack-Entwicklerin",
+  location: "Berlin, Deutschland",
+  availability: "Offen für produktorientierte Full-Stack-Positionen",
+  summary:
+    "Produktorientierte Full-Stack-Entwicklerin mit mehr als vier Jahren Erfahrung und Frontend-Schwerpunkt in React und TypeScript. Entwickelte sich von der begleiteten Umsetzung zur primären Implementierungsverantwortung für sechs Webanwendungen und zwei React-Native-Apps in einem zweiköpfigen Entwicklungsteam. Verbindet einen Marketing-Hintergrund mit der praktischen Umsetzung von Benutzeroberflächen, Backend-Services, Datenprozessen und plattformübergreifenden Integrationen.",
+  experience: [
+    {
+      period: "07.2022 – 06.2026",
+      company: "The Key Technology GmbH · Berlin",
+      role: "Full Stack Developer",
+      details: [
+        "Übernahm in den letzten zwei Jahren die primäre Implementierungsverantwortung für sechs Webanwendungen und zwei React-Native-Apps in einem zweiköpfigen Entwicklungsteam; Salesforce-Integrationen waren ausgenommen.",
+        "Verhinderte doppelte Kurskennungen in zwei an Salesforce angebundenen Lernplattformen, indem sie einen nur auf eine Datenbank begrenzten Validierungsentwurf hinterfragte und eine plattformübergreifende Eindeutigkeitsprüfung mit gRPC implementierte.",
+        "Analysierte wiederkehrende Zertifikatsfehler in der ärztlichen Fortbildung anhand historischer Kurs- und Einreichungsdaten. Entwickelte MongoDB-Datenkonverter und generierte Zertifikate für Vorfälle mit üblicherweise etwa 2 bis 50 betroffenen Nutzenden, teilweise mehr, neu.",
+        "Entwickelte Berechtigungs-, Fortschritts- und Zertifizierungsabläufe für eine Lernplattform mit mehr als 50.000 registrierten Nutzenden und 40 aktiven Kursen, einschließlich Zugangsregeln, Kurssperren und Ansichten für auslaufende Zertifikate.",
+        "Ersetzte Eingriffe durch Entwickler mit einer Admin-Selbstbedienungsfunktion, die den Kursstatus anzeigte und den Fortschritt von Nutzenden zurücksetzte, die nach drei Fehlversuchen gesperrt waren.",
+        "Erstellte Auswertungen für randomisierte Fragensätze und ordnete gespeicherte MongoDB-Antworten den Kursdefinitionen zu, um Anzeigehäufigkeit, korrekte Antworten und die am häufigsten gewählte falsche Antwort zu berechnen.",
+        "Überarbeitete das Frontend einer separaten Anwendung mit rund 500 Kursen und entwickelte einen Backend-Service zum Abfragen und Sortieren der von Nutzenden begonnenen Kurse.",
+        "Implementierte den Frontend-Ablauf für die Zwei-Faktor-Authentifizierung von Admins, einschließlich QR-Code-Einrichtung, sechsstelliger Authenticator-Codes, Wiederherstellungscodes und Fehlerzuständen.",
+        "Reduzierte nach einer gemeinsamen Überarbeitung der Navigation mit dem Kunden den Weg vom Kurs-Dashboard zu den Prüfungsfragen von etwa vier auf zwei Klicks.",
+        "Implementierte Backend-Unit-Tests und pflegte GitHub-Actions-Workflows für Build-, Release- und Deployment-Prozesse.",
+      ],
+      highlights: [
+        "React / React Native",
+        "Scala / MongoDB",
+        "GraphQL / REST APIs / gRPC",
+        "GitHub Actions",
+      ],
+    },
+    {
+      period: "12.2021 – 05.2022",
+      company: "Kooku Recruiting Partners · Berlin",
+      role: "Praktikantin Frontend-Webentwicklung",
+      details: [
+        "Implementierte Anwendungsoberflächen mit Vue.js und Tailwind CSS in Zusammenarbeit mit Design- und Backend-Kollegen.",
+      ],
+      highlights: ["Vue.js", "Tailwind CSS", "Agile Zusammenarbeit"],
+    },
+  ],
+  previousExperience: [
+    {
+      period: "09.2020 – 02.2021",
+      company: "Conjuro Digital Marketing Agency · Berlin",
+      role: "Freiberufliche Webdesignerin",
+      details: ["Erstellte und pflegte Unternehmenswebsites mit WordPress und CSS."],
+      highlights: ["WordPress", "CSS", "Webdesign"],
+    },
+    {
+      period: "02.2019 – 01.2020",
+      company: "Plus Hostel and Hotel · Berlin",
+      role: "Reservierungsmanagerin",
+      details: [
+        "Verwaltete die Buchungssoftware und unterstützte das Community-Management.",
+      ],
+      highlights: ["Buchungssoftware", "Community-Management"],
+    },
+    {
+      period: "03.2015 – 01.2019",
+      company: "Weinwirtschaft in der Akademie der Künste · Berlin",
+      role: "Restaurant-Supervisorin und Servicekraft",
+      details: [
+        "Betreute Gäste, wickelte Kassenvorgänge ab und unterstützte die Veranstaltungskoordination.",
+      ],
+      highlights: ["Kundenservice", "Veranstaltungskoordination"],
+    },
+  ],
+  education: [
+    {
+      period: "03.2021 – 07.2021",
+      school: "Code Academy Berlin",
+      degree:
+        "Full Stack Web Development · React, Gatsby, GraphQL, Netlify CMS",
+    },
+    {
+      period: "02.2020 – 06.2020",
+      school: "Business Trend Academy · Berlin",
+      degree: "Online Marketing Manager · SEO, SEA, SMO, HTML, CSS",
+    },
+    {
+      period: "09.2010 – 02.2013",
+      school: "Universität Ca’ Foscari Venedig, Italien",
+      degree: "Masterabschluss in Marketing und Kommunikation",
+    },
+  ],
+  skillGroups: [
+    {
+      ...resumeData.skillGroups[0],
+      description: "Web- und Mobile-Oberflächen",
+    },
+    {
+      ...resumeData.skillGroups[1],
+      category: "Backend & Daten",
+      description: "Services, APIs und Datenhaltung",
+    },
+    {
+      ...resumeData.skillGroups[2],
+      category: "Qualität & Delivery",
+      description: "Tests und Entwicklungsworkflows",
+    },
+    {
+      ...resumeData.skillGroups[3],
+      category: "Angewandte KI",
+      description: "Toolgestützte Produktfunktionen",
+    },
+  ],
+  languages: [
+    "Italienisch · Muttersprache",
+    "Englisch · B2",
+    "Deutsch · B2",
+    "Spanisch · B1",
+  ],
+  projects: [
+    {
+      ...resumeData.projects[0],
+      description:
+        "Authentifizierte React- und NestJS-Anwendung zur Erfassung von Nettovermögen und Investitionen mit Jahresdiagrammen und einem konfigurierbaren Dashboard, dessen Widget-Anordnung pro Nutzer gespeichert wird. Enthält zwei vordefinierte, nutzerbezogene Gemini-Tools für Finanzanalysen, Frontend- und Backend-Tests, Docker Compose sowie separate GitHub-Actions-CI-Workflows.",
+    },
+  ],
+} as const;
+
+export const resumeLabels = {
+  en: {
+    htmlLang: "en",
+    rail: "Curriculum vitae / 2026",
+    navigation: "Resume navigation",
+    about: "About",
+    experience: "Experience",
+    previousExperience: "Previous experience",
+    previousExperienceIntro:
+      "Earlier customer-facing and digital roles that shaped my product perspective and communication skills.",
+    education: "Education",
+    skills: "Skills",
+    certifications: "Certifications",
+    projects: "Projects",
+  },
+  de: {
+    htmlLang: "de",
+    rail: "Lebenslauf / 2026",
+    navigation: "Lebenslauf-Navigation",
+    about: "Profil",
+    experience: "Berufserfahrung",
+    previousExperience: "Frühere Berufserfahrung",
+    previousExperienceIntro:
+      "Frühere kundennahe und digitale Tätigkeiten, die meine Produktperspektive und Kommunikationsfähigkeit geprägt haben.",
+    education: "Ausbildung",
+    skills: "Kenntnisse",
+    certifications: "Zertifikate",
+    projects: "Projekte",
+  },
+} as const;
+
+export type ResumeLocale = keyof typeof resumeLabels;
