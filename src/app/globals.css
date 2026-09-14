@@ -369,6 +369,43 @@ h3 {
 .experience-details li::marker {
   color: var(--coral);
 }
+.previous-experience-intro {
+  max-width: 40rem;
+  margin: -0.8rem 0 2rem;
+}
+.previous-experience-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+}
+.previous-experience-item {
+  display: flex;
+  min-width: 0;
+  padding: 1.6rem;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.previous-experience-item:first-child {
+  padding-left: 0;
+}
+.previous-experience-item:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+.previous-experience-item .period {
+  margin-bottom: 1.4rem;
+}
+.previous-experience-item .company {
+  min-height: 2.2rem;
+}
+.previous-experience-description {
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+.previous-experience-item .tag-list {
+  margin-top: auto;
+}
 .tag-list,
 .skill-cloud {
   list-style: none;
@@ -660,9 +697,22 @@ h3 {
     padding-top: 0;
   }
   .split-section,
-  .project-grid {
+  .project-grid,
+  .previous-experience-list {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+  .previous-experience-list {
+    gap: 0;
+  }
+  .previous-experience-item,
+  .previous-experience-item:first-child,
+  .previous-experience-item:last-child {
+    padding: 1.6rem 0;
+    border-right: 0;
+  }
+  .previous-experience-item .company {
+    min-height: auto;
   }
   .project-card {
     min-height: 16rem;

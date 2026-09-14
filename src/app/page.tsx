@@ -77,6 +77,40 @@ export default function Home() {
               </div>
             </div>
           </section>
+          <section
+            id="previous-experience"
+            className="content-section previous-experience-section reveal"
+          >
+            <div className="section-body">
+              <h2>Previous experience</h2>
+              <p className="previous-experience-intro">
+                Earlier customer-facing and digital roles that shaped my product
+                perspective and communication skills.
+              </p>
+              <div className="previous-experience-list">
+                {resumeData.previousExperience.map((item) => (
+                  <article
+                    className="previous-experience-item"
+                    key={`${item.company}-${item.period}`}
+                  >
+                    <p className="period">{item.period}</p>
+                    <div>
+                      <h3>{item.role}</h3>
+                      <p className="company">{item.company}</p>
+                      <p className="previous-experience-description">
+                        {item.details[0]}
+                      </p>
+                      <ul className="tag-list">
+                        {item.highlights.map((tag) => (
+                          <li key={tag}>{tag}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
           <section className="content-section details-section reveal">
             <div className="section-body">
               <h2>Education</h2>
