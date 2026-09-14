@@ -37,7 +37,6 @@ export function ResumeView({
             </div>
           </div>
           <div className="profile-utilities">
-            <LanguageSwitcher locale={locale} />
             <Image
               className="profile-picture"
               src="/profile-pic-small.png"
@@ -46,6 +45,7 @@ export function ResumeView({
               height={170}
               priority
             />
+            <LanguageSwitcher locale={locale} />
           </div>
         </header>
         <div className="language-container">
@@ -78,6 +78,9 @@ export function ResumeView({
                     <div>
                       <h3>{item.role}</h3>
                       <p className="company">{item.company}</p>
+                      <h4 className="experience-subheading">
+                        {labels.resultsImpact}
+                      </h4>
                       <ul className="experience-details">
                         {item.details.map((detail) => <li key={detail}>{detail}</li>)}
                       </ul>
@@ -142,19 +145,21 @@ export function ResumeView({
               </div>
             </div>
           </section>
-          <section className="content-section details-section reveal">
-            <div className="section-body">
-              <h2>{labels.certifications}</h2>
-              <div className="certification-grid">
-                {data.certifications.map((certification) => (
-                  <article className="certification-card" key={certification.name}>
-                    <span className="certification-icon" aria-hidden="true"><Award size={20} strokeWidth={1.7} /></span>
-                    <div><h3>{certification.name}</h3><p>{certification.issuer}</p></div>
-                  </article>
-                ))}
+          {data.certifications.length > 0 && (
+            <section className="content-section details-section reveal">
+              <div className="section-body">
+                <h2>{labels.certifications}</h2>
+                <div className="certification-grid">
+                  {data.certifications.map((certification) => (
+                    <article className="certification-card" key={certification.name}>
+                      <span className="certification-icon" aria-hidden="true"><Award size={20} strokeWidth={1.7} /></span>
+                      <div><h3>{certification.name}</h3><p>{certification.issuer}</p></div>
+                    </article>
+                  ))}
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
           <section id="projects" className="content-section projects-section reveal">
             <div className="section-body">
               <h2>{labels.projects}</h2>

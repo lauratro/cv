@@ -76,6 +76,7 @@ export default function PdfResumePage({
               <h3>{item.role} | {item.company}</h3>
               <span>{item.period}</span>
             </div>
+            <h4 className="experience-subheading">{labels.resultsImpact}</h4>
             <ul>
               {item.details.map((detail) => <li key={detail}>{detail}</li>)}
             </ul>
@@ -113,14 +114,16 @@ export default function PdfResumePage({
         ))}
       </section>
 
-      <section className="cv-document-extras">
-        <div>
-          <h2>{labels.certifications}</h2>
-          {data.certifications.map((item) => (
-            <p key={item.name}><strong>{item.name}</strong>, {item.issuer}</p>
-          ))}
-        </div>
-      </section>
+      {data.certifications.length > 0 && (
+        <section className="cv-document-extras">
+          <div>
+            <h2>{labels.certifications}</h2>
+            {data.certifications.map((item) => (
+              <p key={item.name}><strong>{item.name}</strong>, {item.issuer}</p>
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   );
 }

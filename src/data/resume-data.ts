@@ -9,7 +9,7 @@ export const resumeData = {
   email: "tronchinlaura@gmail.com",
   phone: "015238568354",
   summary:
-    "Product-oriented full-stack engineer with 4+ years of experience and frontend depth in React and TypeScript. Progressed from mentored delivery to primary implementation responsibility across six web applications and two React Native apps in a two-developer team. Combines a marketing background with hands-on delivery of user interfaces, backend services, data workflows and cross-platform integrations.",
+    "Product-oriented full-stack engineer with frontend depth in React and TypeScript and a background in marketing. Progressed to primary implementation responsibility across six web applications and two React Native apps, delivering user-facing features, backend services and data workflows for learning platforms serving more than 50,000 registered users.",
   social: [
     {
       label: "LinkedIn",
@@ -31,13 +31,11 @@ export const resumeData = {
         "Progressed to primary implementation responsibility during the final two years for a suite of six web applications and two React Native apps, excluding Salesforce integrations, in a two-developer team.",
         "Prevented duplicate course identifiers across two Salesforce-connected learning platforms by challenging a database-local validation design and implementing a cross-platform gRPC uniqueness check.",
         "Diagnosed recurring certificate failures in regulated medical education, tracing incorrect course identifiers and dates through historical course and submission data. Built MongoDB data converters and regenerated certificates for incidents typically involving about 2–50 users, sometimes more.",
-        "Built course permissions, progression and certification workflows for a learning platform with more than 50,000 registered users and 40 live courses, including eligibility rules, blocked-course states and expiring-certificate views.",
-        "Replaced developer intervention with an administrator self-service workflow that displayed course status and reset progress for users blocked after three failed attempts.",
+        "Built course permissions, progression and certification workflows for a learning platform with more than 50,000 registered users and approximately 500 courses, including eligibility rules, blocked-course states, expiring-certificate views and an administrator self-service reset for users blocked after three failed attempts.",
         "Created assessment reporting for randomized question sets, mapping stored MongoDB answers back to course definitions to calculate answer exposure, correct responses and the most frequently selected wrong answers.",
-        "Rebuilt the frontend of a separate application containing approximately 500 courses and created a backend service to query and sort each user's started courses.",
-        "Implemented the frontend flow for administrator two-factor authentication, including QR-code enrolment, six-digit authenticator verification, recovery codes and error states.",
+        "Rebuilt a production dashboard for a separate platform with approximately 500 courses, implementing supplied Figma designs and independently aggregating course, progress and certification data into views sorted by type, progress and expiry. Modelled course-state cards and a certificate carousel that widened its expiry window from 30 to 90 and 120 days when needed.",
+        "Reduced production dashboard load time from approximately seven seconds to two by improving MongoDB indexes. Added progressive skeleton states so each section rendered as soon as its independent query completed.",
         "Reduced the path from the course dashboard to assessment questions from approximately four clicks to two after reviewing the navigation flow with the client.",
-        "Implemented backend unit tests and maintained GitHub Actions workflows supporting build, release and deployment processes.",
       ],
       highlights: [
         "React / React Native",
@@ -160,16 +158,7 @@ export const resumeData = {
     "German · B2",
     "Spanish · B1",
   ],
-  certifications: [
-    {
-      name: "Web 2.0",
-      issuer: "Business Trend Academy Berlin",
-    },
-    {
-      name: "Online Marketing Manager",
-      issuer: "Business Trend Academy Berlin",
-    },
-  ],
+  certifications: [] as readonly { name: string; issuer: string }[],
   projects: [
     {
       name: "Personal Finance Tracker",
@@ -189,7 +178,7 @@ export const resumeDataDe = {
   location: "Berlin, Deutschland",
   availability: "Offen für produktorientierte Full-Stack-Positionen",
   summary:
-    "Produktorientierte Full-Stack-Entwicklerin mit mehr als vier Jahren Erfahrung und Frontend-Schwerpunkt in React und TypeScript. Entwickelte sich von der begleiteten Umsetzung zur primären Implementierungsverantwortung für sechs Webanwendungen und zwei React-Native-Apps in einem zweiköpfigen Entwicklungsteam. Verbindet einen Marketing-Hintergrund mit der praktischen Umsetzung von Benutzeroberflächen, Backend-Services, Datenprozessen und plattformübergreifenden Integrationen.",
+    "Produktorientierte Full-Stack-Entwicklerin mit Frontend-Schwerpunkt in React und TypeScript sowie einem Hintergrund im Marketing. Übernahm die primäre Implementierungsverantwortung für sechs Webanwendungen und zwei React-Native-Apps und entwickelte Benutzerfunktionen, Backend-Services und Datenprozesse für Lernplattformen mit mehr als 50.000 registrierten Nutzenden.",
   experience: [
     {
       period: "07.2022 – 06.2026",
@@ -199,13 +188,11 @@ export const resumeDataDe = {
         "Übernahm in den letzten zwei Jahren die primäre Implementierungsverantwortung für sechs Webanwendungen und zwei React-Native-Apps in einem zweiköpfigen Entwicklungsteam; Salesforce-Integrationen waren ausgenommen.",
         "Verhinderte doppelte Kurskennungen in zwei an Salesforce angebundenen Lernplattformen, indem sie einen nur auf eine Datenbank begrenzten Validierungsentwurf hinterfragte und eine plattformübergreifende Eindeutigkeitsprüfung mit gRPC implementierte.",
         "Analysierte wiederkehrende Zertifikatsfehler in der ärztlichen Fortbildung anhand historischer Kurs- und Einreichungsdaten. Entwickelte MongoDB-Datenkonverter und generierte Zertifikate für Vorfälle mit üblicherweise etwa 2 bis 50 betroffenen Nutzenden, teilweise mehr, neu.",
-        "Entwickelte Berechtigungs-, Fortschritts- und Zertifizierungsabläufe für eine Lernplattform mit mehr als 50.000 registrierten Nutzenden und 40 aktiven Kursen, einschließlich Zugangsregeln, Kurssperren und Ansichten für auslaufende Zertifikate.",
-        "Ersetzte Eingriffe durch Entwickler mit einer Admin-Selbstbedienungsfunktion, die den Kursstatus anzeigte und den Fortschritt von Nutzenden zurücksetzte, die nach drei Fehlversuchen gesperrt waren.",
+        "Entwickelte Berechtigungs-, Fortschritts- und Zertifizierungsabläufe für eine Lernplattform mit mehr als 50.000 registrierten Nutzenden und rund 500 Kursen, einschließlich Zugangsregeln, Kurssperren, Ansichten für auslaufende Zertifikate und einer Admin-Selbstbedienungsfunktion zum Zurücksetzen des Fortschritts nach drei Fehlversuchen.",
         "Erstellte Auswertungen für randomisierte Fragensätze und ordnete gespeicherte MongoDB-Antworten den Kursdefinitionen zu, um Anzeigehäufigkeit, korrekte Antworten und die am häufigsten gewählte falsche Antwort zu berechnen.",
-        "Überarbeitete das Frontend einer separaten Anwendung mit rund 500 Kursen und entwickelte einen Backend-Service zum Abfragen und Sortieren der von Nutzenden begonnenen Kurse.",
-        "Implementierte den Frontend-Ablauf für die Zwei-Faktor-Authentifizierung von Admins, einschließlich QR-Code-Einrichtung, sechsstelliger Authenticator-Codes, Wiederherstellungscodes und Fehlerzuständen.",
+        "Überarbeitete ein produktives Dashboard für eine separate Plattform mit rund 500 Kursen, setzte bereitgestellte Figma-Entwürfe um und aggregierte eigenständig Kurs-, Fortschritts- und Zertifikatsdaten in nach Typ, Fortschritt und Ablauf sortierten Ansichten. Entwickelte Karten für unterschiedliche Kurszustände sowie ein Zertifikatskarussell, das sein Zeitfenster bei Bedarf von 30 auf 90 und 120 Tage erweiterte.",
+        "Reduzierte die Ladezeit des produktiven Dashboards durch optimierte MongoDB-Indizes von rund sieben auf zwei Sekunden. Ergänzte schrittweise Skeleton-Zustände, sodass jeder Bereich angezeigt wurde, sobald seine unabhängige Abfrage abgeschlossen war.",
         "Reduzierte nach einer gemeinsamen Überarbeitung der Navigation mit dem Kunden den Weg vom Kurs-Dashboard zu den Prüfungsfragen von etwa vier auf zwei Klicks.",
-        "Implementierte Backend-Unit-Tests und pflegte GitHub-Actions-Workflows für Build-, Release- und Deployment-Prozesse.",
       ],
       highlights: [
         "React / React Native",
@@ -312,6 +299,7 @@ export const resumeLabels = {
     navigation: "Resume navigation",
     about: "About",
     experience: "Experience",
+    resultsImpact: "Results & Impact",
     previousExperience: "Previous experience",
     previousExperienceIntro:
       "Earlier customer-facing and digital roles that shaped my product perspective and communication skills.",
@@ -326,6 +314,7 @@ export const resumeLabels = {
     navigation: "Lebenslauf-Navigation",
     about: "Profil",
     experience: "Berufserfahrung",
+    resultsImpact: "Ergebnisse & Wirkung",
     previousExperience: "Frühere Berufserfahrung",
     previousExperienceIntro:
       "Frühere kundennahe und digitale Tätigkeiten, die meine Produktperspektive und Kommunikationsfähigkeit geprägt haben.",
