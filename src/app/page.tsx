@@ -12,10 +12,10 @@ export default function Home() {
     <main className="site-shell">
       <Aside />
       <div className="resume-page pt-8 w-full">
-        <div className="mt-10 flex flex-row  justify-between">
-          <div className="flex flex-col justify-between">
+        <header className="profile-header">
+          <div className="profile-copy">
             <NameRoleSection />
-            <div className="flex flex-col md:flex-row items-center">
+            <div className="profile-actions">
               <SocialMedia />
               <PdfVersions />
             </div>
@@ -27,11 +27,11 @@ export default function Home() {
             width={170}
             height={170}
           />
-        </div>
+        </header>
         <div className="language-container">
           <div>
             {resumeData.languages.map((language) => (
-              <span className="mr-4" key="language">
+              <span className="mr-4" key={language}>
                 {language}
               </span>
             ))}
@@ -87,10 +87,10 @@ export default function Home() {
                 Earlier customer-facing and digital roles that shaped my product
                 perspective and communication skills.
               </p>
-              <div className="previous-experience-list">
+              <div className="timeline-list">
                 {resumeData.previousExperience.map((item) => (
                   <article
-                    className="previous-experience-item"
+                    className="timeline-item previous-experience-item"
                     key={`${item.company}-${item.period}`}
                   >
                     <p className="period">{item.period}</p>

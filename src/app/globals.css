@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --ink: #24372f;
-  --paper: #f4efe7;
-  --surface: #faf7f1;
-  --muted: #625d58;
-  --line: #d6cec2;
+  --ink: #19343d;
+  --paper: #edf3f2;
+  --surface: #f8fbfa;
+  --muted: #53666b;
+  --line: #c8d5d4;
 
-  --coral: #8a4355;
-  --soft-coral: #ead9dc;
+  --coral: #28717a;
+  --soft-coral: #d5e7e7;
 
-  --accent-rgb: 138, 67, 85;
+  --accent-rgb: 40, 113, 122;
 }
 * {
   box-sizing: border-box;
@@ -25,6 +25,9 @@ body {
   color: var(--ink);
   background: var(--paper);
   font-family: "Trebuchet MS", sans-serif;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
 }
 a {
   color: inherit;
@@ -35,9 +38,10 @@ a {
   background:
     radial-gradient(
       circle at 80% 5%,
-      rgba(var(--accent-rgb), 0.1),
-      transparent 24rem
+      rgba(var(--accent-rgb), 0.14),
+      transparent 28rem
     ),
+    radial-gradient(circle at 8% 42%, rgba(25, 52, 61, 0.06), transparent 30rem),
     var(--paper);
 }
 .side-rail {
@@ -75,9 +79,50 @@ a {
   opacity: 0.65;
 }
 .resume-page {
-  max-width: 1140px;
+  max-width: 1180px;
   margin: auto;
-  padding: 0 4rem 2rem 6.5rem;
+  padding: 0 4rem 4rem 6.5rem;
+}
+.profile-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3rem;
+  margin: 2.5rem 0 1rem;
+  padding: clamp(2rem, 5vw, 4rem);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(var(--accent-rgb), 0.22);
+  border-radius: 1.75rem;
+  background: linear-gradient(
+    135deg,
+    rgba(248, 251, 250, 0.96),
+    rgba(213, 231, 231, 0.6)
+  );
+  box-shadow: 0 1.5rem 4rem rgba(25, 52, 61, 0.08);
+}
+.profile-header::after {
+  width: 15rem;
+  height: 15rem;
+  position: absolute;
+  top: -7rem;
+  right: 5rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.18);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+.profile-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.profile-actions {
+  display: flex;
+  align-items: center;
+  margin-top: 2.4rem;
 }
 .top-nav {
   height: 6.2rem;
@@ -192,7 +237,7 @@ p {
 h1 {
   margin-bottom: 1.2rem;
   font:
-    500 clamp(4rem, 12vw, 2rem)/0.78 Georgia,
+    500 clamp(3rem, 6vw, 5.5rem)/0.9 Georgia,
     serif;
   letter-spacing: -0.08em;
   animation: hero-title-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -204,7 +249,9 @@ h1 {
 }
 .language-container {
   display: flex;
-  padding-bottom: 0.6rem;
+  padding: 1rem 0 1.25rem;
+  align-items: center;
+  justify-content: flex-end;
 }
 .hero-number {
   display: block;
@@ -225,17 +272,22 @@ p,
   font-weight: 400;
 }
 .content-grid {
-  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 1.25rem;
 }
 .content-section {
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
-  padding: 6rem 0;
-  border-bottom: 1px solid var(--line);
+  padding: clamp(2.5rem, 6vw, 5rem);
+  border: 1px solid rgba(83, 102, 107, 0.18);
+  border-radius: 1.5rem;
+  background: rgba(248, 251, 250, 0.72);
+  box-shadow: 0 0.8rem 2.5rem rgba(25, 52, 61, 0.035);
+  backdrop-filter: blur(10px);
 }
 .content-section:last-child {
-  border-bottom: 0;
+  border-bottom: 1px solid rgba(83, 102, 107, 0.18);
 }
 #about > div > p,
 .description {
@@ -252,11 +304,20 @@ p,
   padding-top: 0.35rem;
 }
 h2 {
-  margin-bottom: 2.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2.4rem;
   font:
     500 clamp(2rem, 4vw, 3.5rem)/1 Georgia,
     serif;
   letter-spacing: -0.05em;
+}
+h2::after {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, var(--line), transparent);
+  content: "";
 }
 .large-copy {
   max-width: 30rem;
@@ -284,10 +345,15 @@ h2 {
 .profile-picture {
   width: 10rem;
   height: 10rem;
+  position: relative;
+  z-index: 1;
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
-  border: 1px solid var(--coral);
+  border: 0.35rem solid rgba(248, 251, 250, 0.88);
+  box-shadow:
+    0 0 0 1px rgba(var(--accent-rgb), 0.45),
+    0 1rem 2.5rem rgba(25, 52, 61, 0.16);
 }
 .social-col {
   display: flex;
@@ -331,6 +397,10 @@ h2 {
   gap: 2rem;
   padding: 1.8rem 0;
   border-bottom: 1px solid var(--line);
+  transition: transform 0.2s ease;
+}
+.timeline-item:hover {
+  transform: translateX(0.3rem);
 }
 .period {
   color: var(--muted);
@@ -373,38 +443,12 @@ h3 {
   max-width: 40rem;
   margin: -0.8rem 0 2rem;
 }
-.previous-experience-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--line);
-}
 .previous-experience-item {
-  display: flex;
   min-width: 0;
-  padding: 1.6rem;
-  flex-direction: column;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.previous-experience-item:first-child {
-  padding-left: 0;
-}
-.previous-experience-item:last-child {
-  padding-right: 0;
-  border-right: 0;
-}
-.previous-experience-item .period {
-  margin-bottom: 1.4rem;
-}
-.previous-experience-item .company {
-  min-height: 2.2rem;
 }
 .previous-experience-description {
   margin-bottom: 1.25rem;
   font-size: 0.9rem;
-}
-.previous-experience-item .tag-list {
-  margin-top: auto;
 }
 .tag-list,
 .skill-cloud {
@@ -416,9 +460,10 @@ h3 {
   gap: 0.45rem;
 }
 .tag-list li {
-  border: 1px solid rgba(var(--accent-rgb), 0.62);
+  border: 1px solid rgba(var(--accent-rgb), 0.38);
   border-radius: 999px;
   padding: 0.35rem 0.65rem;
+  background: rgba(213, 231, 231, 0.35);
   font:
     0.62rem "Courier New",
     monospace;
@@ -444,7 +489,9 @@ h3 {
   gap: 0.65rem;
 }
 .skill-cloud li {
-  background: var(--soft-coral);
+  border: 1px solid rgba(var(--accent-rgb), 0.12);
+  border-radius: 0.55rem;
+  background: rgba(213, 231, 231, 0.72);
   padding: 0.55rem 0.75rem;
   font-size: 0.75rem;
 }
@@ -493,14 +540,16 @@ h3 {
   flex-direction: column;
   background: var(--ink);
   color: var(--paper);
+  border-radius: 1.15rem;
+  overflow: hidden;
   transition:
     transform 0.25s ease,
     background 0.25s ease;
 }
 .project-card:hover {
   transform: translateY(-0.45rem);
-  background: #20483d;
-  box-shadow: 0 1.1rem 2.5rem rgba(23, 53, 45, 0.16);
+  background: #245a62;
+  box-shadow: 0 1.1rem 2.5rem rgba(25, 52, 61, 0.16);
 }
 .project-card:focus-visible,
 .nav-links a:focus-visible,
@@ -536,7 +585,7 @@ h3 {
   transform: translate(0.2rem, -0.2rem);
 }
 .project-card p {
-  color: #e4e2dc;
+  color: #e4eceb;
   margin-bottom: 1.4rem;
 }
 .project-card .tag-list li {
@@ -640,7 +689,8 @@ h3 {
     animation: none;
   }
   .project-card,
-  .project-card h3 span {
+  .project-card h3 span,
+  .timeline-item {
     transition: none;
   }
 }
@@ -652,6 +702,14 @@ h3 {
   }
   .resume-page {
     padding: 0;
+  }
+  .profile-header,
+  .content-section {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
   .hero-section {
     min-height: auto;
@@ -673,6 +731,26 @@ h3 {
   .resume-page {
     padding: 0 1.3rem;
   }
+  .profile-header {
+    align-items: flex-start;
+    margin-top: 1rem;
+    padding: 2rem 1.5rem;
+    flex-direction: column-reverse;
+  }
+  .profile-header::after {
+    right: -5rem;
+  }
+  .profile-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .profile-picture {
+    width: 7rem;
+    height: 7rem;
+  }
+  .language-container {
+    justify-content: flex-start;
+  }
   .top-nav {
     height: 4.8rem;
   }
@@ -686,33 +764,27 @@ h3 {
     gap: 3rem;
   }
   h1 {
-    font-size: clamp(5rem, 23vw, 8rem);
+    font-size: clamp(2.8rem, 13vw, 4.5rem);
   }
   .content-section {
     grid-template-columns: 1fr;
     gap: 1.2rem;
-    padding: 4rem 0;
+    padding: 2.5rem 1.5rem;
   }
   .section-index {
     padding-top: 0;
   }
   .split-section,
-  .project-grid,
-  .previous-experience-list {
+  .project-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
-  .previous-experience-list {
-    gap: 0;
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
   }
-  .previous-experience-item,
-  .previous-experience-item:first-child,
-  .previous-experience-item:last-child {
-    padding: 1.6rem 0;
-    border-right: 0;
-  }
-  .previous-experience-item .company {
-    min-height: auto;
+  .timeline-item:hover {
+    transform: none;
   }
   .project-card {
     min-height: 16rem;
