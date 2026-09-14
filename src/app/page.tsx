@@ -130,12 +130,25 @@ export default function Home() {
           </section>
           <section className="content-section details-section reveal">
             <div className="section-body">
-              <h2>Tools &amp; skills</h2>
-              <ul className="skill-cloud">
-                {resumeData.skills.map((skill) => (
-                  <li key={skill}>{skill}</li>
+              <h2>Skills</h2>
+              <div className="skill-groups">
+                {resumeData.skillGroups.map((group) => (
+                  <article className="skill-group" key={group.category}>
+                    <div className="skill-group-heading">
+                      <div>
+                        <h3>{group.category}</h3>
+                        <p>{group.description}</p>
+                      </div>
+                      <span aria-hidden="true">{group.skills.length}</span>
+                    </div>
+                    <ul className="skill-cloud">
+                      {group.skills.map((skill) => (
+                        <li key={skill}>{skill}</li>
+                      ))}
+                    </ul>
+                  </article>
                 ))}
-              </ul>
+              </div>
             </div>
           </section>
           <section className="content-section details-section reveal">
