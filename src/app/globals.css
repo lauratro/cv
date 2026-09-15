@@ -282,13 +282,13 @@ p {
 h1 {
   margin-bottom: 1.2rem;
   font:
-    500 clamp(3rem, 6vw, 5.5rem)/0.9 Georgia,
+    500 clamp(2.6rem, 5vw, 3.5rem)/0.95 Georgia,
     serif;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.065em;
   animation: hero-title-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .hero-role {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: var(--muted);
   font-weight: 400;
 }
@@ -354,7 +354,7 @@ h2 {
   gap: 1.25rem;
   margin-bottom: 2.4rem;
   font:
-    500 clamp(2rem, 4vw, 3.5rem)/1 Georgia,
+    500 clamp(2rem, 4vw, 2.5rem)/1 Georgia,
     serif;
   letter-spacing: -0.05em;
 }
@@ -901,7 +901,7 @@ h3 {
   margin: 0;
   color: #19343d;
   font:
-    700 2rem/1.05 Arial,
+    700 1.75rem/1.05 Arial,
     Helvetica,
     sans-serif;
   letter-spacing: -0.035em;
@@ -910,7 +910,7 @@ h3 {
 .cv-document-role {
   margin: 0.2rem 0 0.45rem;
   color: #28717a;
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 700;
 }
 .cv-document-contact {
@@ -979,7 +979,10 @@ h3 {
 .cv-document .experience-subheading {
   margin: 0.3rem 0 0;
   color: #28717a;
-  font: 700 0.61rem/1.2 Arial, Helvetica, sans-serif;
+  font:
+    700 0.61rem/1.2 Arial,
+    Helvetica,
+    sans-serif;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -1138,9 +1141,9 @@ h3 {
     gap: 3rem;
   }
   h1 {
-    font-size: clamp(2.4rem, 11vw, 3.5rem);
-    line-height: 0.95;
-    letter-spacing: -0.065em;
+    font-size: clamp(2.15rem, 9vw, 2.9rem);
+    line-height: 1;
+    letter-spacing: -0.055em;
   }
   h2 {
     gap: 0.8rem;
@@ -1151,7 +1154,7 @@ h3 {
     font-size: 1rem;
   }
   .hero-role {
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 1.4;
   }
   .language-container {
