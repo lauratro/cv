@@ -5,10 +5,6 @@ import Link from "next/link";
 import { useEffect } from "react";
 
 export function LanguageSwitcher({ locale }: { locale: ResumeLocale }) {
-  useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
-
   return (
     <nav
       className="language-switcher"
