@@ -18,6 +18,7 @@
 # local reference repositories (never commit)
 /claude-skills/
 /cv-site/
+.agents/skills
 
 # private CV evidence and working notes
 /cv-work/
