@@ -37,8 +37,6 @@ src/
 │   └── page.tsx               English CV route
 ├── data/
 │   └── resume-data.ts         English and German CV content
-└── middleware.ts              Request-locale handling
-
 public/
 ├── Laura-Tronchin-CV-ATS-EN.pdf
 ├── Laura-Tronchin-Lebenslauf-ATS-DE.pdf
@@ -91,6 +89,35 @@ shown by the website and the printable routes at `/pdf/en` and `/pdf/de`.
 The downloadable PDF files in `public/` are committed assets. After changing
 the CV, regenerate both files from the corresponding printable routes so the
 downloads remain synchronized with the website.
+
+## Deployment on Cloudflare Pages
+
+The application is exported as a static site to the `out/` directory and
+deployed by the GitHub Actions workflow in
+`.github/workflows/deploy-cloudflare-pages.yml`. Every push to `main` runs a
+clean production build and deploys it to Cloudflare Pages. The workflow can
+also be started manually from the Actions tab.
+
+Create a Cloudflare Pages project using **Direct Upload**, then configure the
+following repository secrets in GitHub under **Settings > Secrets and
+variables > Actions > Secrets**:
+
+| Secret | Purpose |
+| --- | --- |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account that owns the Pages project |
+| `CLOUDFLARE_API_TOKEN` | Scoped token with Cloudflare Pages edit permission |
+
+Configure these repository variables under **Settings > Secrets and variables
+> Actions > Variables**:
+
+| Variable | Value |
+| --- | --- |
+| `CLOUDFLARE_PROJECT_NAME` | Exact name of the Cloudflare Pages project |
+| `PUBLIC_SITE_URL` | The final public URL, without a trailing slash |
+
+The workflow uses Node.js 20 and sets `NODE_ENV=production` itself. Do not also
+enable Cloudflare's Git-based builds for the same project, otherwise a push may
+create two deployments.
 
 ## Credits
 
