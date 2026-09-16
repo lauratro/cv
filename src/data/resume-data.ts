@@ -7,7 +7,6 @@ export const resumeData = {
   location: "Berlin, Germany",
   availability: "Open to product-oriented full-stack opportunities",
   email: "tronchinlaura@gmail.com",
-  phone: "015238568354",
   summary:
     "Product-oriented full-stack engineer with frontend depth in React and TypeScript and a background in marketing. Progressed to primary implementation responsibility across six web applications and two React Native apps, delivering user-facing features, backend services and data workflows for learning platforms serving more than 50,000 registered users.",
   social: [

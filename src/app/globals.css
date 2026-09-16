@@ -957,6 +957,12 @@ h3 {
   font-size: 0.74rem;
   line-height: 1.4;
 }
+.cv-document a {
+  color: #28717a;
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.12em;
+}
 .cv-document-skills {
   display: grid;
   gap: 0.12rem;

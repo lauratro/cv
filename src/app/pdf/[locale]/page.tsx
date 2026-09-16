@@ -26,7 +26,12 @@ export default function PdfResumePage({
           <h1>{data.name}</h1>
           <p className="cv-document-role">{data.role}</p>
           <p className="cv-document-contact">
-            {data.location} · {data.phone} · {data.email} · linkedin.com/in/laura-tronchin · github.com/lauratro
+            {data.location} · {data.email} ·{" "}
+            <a href="https://linkedin.com/in/laura-tronchin">
+              linkedin.com/in/laura-tronchin
+            </a>{" "}
+            ·{" "}
+            <a href="https://github.com/lauratro">github.com/lauratro</a>
           </p>
           <p className="cv-document-languages">
             {data.languages.map((language, index) => {
@@ -98,7 +103,9 @@ export default function PdfResumePage({
         <h2>{labels.projects}</h2>
         {data.projects.map((project) => (
           <article className="cv-document-entry" key={project.name}>
-            <h3>{project.name} | github.com/lauratro/personal-finance-tracker</h3>
+            <h3>
+              {project.name} | <a href={project.href}>{project.href}</a>
+            </h3>
             <p>{project.description}</p>
           </article>
         ))}
