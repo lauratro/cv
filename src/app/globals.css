@@ -5,7 +5,7 @@
 :root {
   --ink: #19343d;
   --paper: #edf3f2;
-  --shell: #e3ecea;
+  --shell: #d4e1df;
   --surface: #f8fbfa;
   --muted: #53666b;
   --line: #c8d5d4;
@@ -80,7 +80,7 @@ a {
   opacity: 0.65;
 }
 .resume-page {
-  max-width: 1180px;
+  max-width: 1320px;
   margin: auto;
   padding: 1rem 4rem 4rem 6.5rem;
 }
@@ -334,7 +334,7 @@ p,
   border-radius: 1.75rem;
   background: rgba(248, 251, 250, 0.82);
   content: "";
-  filter: blur(0.35rem);
+  filter: blur(0.1rem);
   pointer-events: none;
 }
 #about > div > p,
@@ -475,7 +475,7 @@ h3 {
 }
 .experience-details {
   list-style: none;
-  max-width: 44rem;
+  max-width: 50rem;
   margin: 0 0 1.35rem;
   padding-left: 0;
   color: var(--muted);
