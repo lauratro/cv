@@ -5,6 +5,7 @@
 :root {
   --ink: #19343d;
   --paper: #edf3f2;
+  --shell: #e3ecea;
   --surface: #f8fbfa;
   --muted: #53666b;
   --line: #c8d5d4;
@@ -41,12 +42,8 @@ a {
       rgba(var(--accent-rgb), 0.14),
       transparent 28rem
     ),
-    radial-gradient(
-      circle at 8% 42%,
-      rgba(25, 52, 61, 0.06),
-      transparent 30rem
-    ),
-    var(--paper);
+    radial-gradient(circle at 8% 42%, rgba(25, 52, 61, 0.1), transparent 30rem),
+    var(--shell);
 }
 .side-rail {
   position: fixed;
@@ -85,7 +82,7 @@ a {
 .resume-page {
   max-width: 1180px;
   margin: auto;
-  padding: 0 4rem 4rem 6.5rem;
+  padding: 1rem 4rem 4rem 6.5rem;
 }
 .profile-header {
   display: flex;
@@ -325,14 +322,20 @@ p,
   grid-template-columns: 1fr;
   gap: 3rem;
   padding: clamp(2.5rem, 6vw, 5rem);
-  border: 1px solid rgba(83, 102, 107, 0.18);
-  border-radius: 1.5rem;
-  background: rgba(248, 251, 250, 0.72);
-  box-shadow: 0 0.8rem 2.5rem rgba(25, 52, 61, 0.035);
-  backdrop-filter: blur(10px);
+  position: relative;
+  border: 0;
+  background: transparent;
+  isolation: isolate;
 }
-.content-section:last-child {
-  border-bottom: 1px solid rgba(83, 102, 107, 0.18);
+.content-section::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0.9rem;
+  border-radius: 1.75rem;
+  background: rgba(248, 251, 250, 0.82);
+  content: "";
+  filter: blur(0.35rem);
+  pointer-events: none;
 }
 #about > div > p,
 .description {
@@ -1093,6 +1096,9 @@ h3 {
     background: transparent;
     box-shadow: none;
   }
+  .content-section::before {
+    display: none;
+  }
   .hero-section {
     min-height: auto;
     padding: 2rem 0;
@@ -1111,7 +1117,7 @@ h3 {
     display: none;
   }
   .resume-page {
-    padding: 0 1.3rem;
+    padding: 0.5rem 1.3rem;
   }
   .profile-header {
     align-items: flex-start;
