@@ -1,5 +1,5 @@
-import type { ResumeLocale } from "@/data/resume-data";
-import { resumeData, resumeDataDe, resumeLabels } from "@/data/resume-data";
+import type { ResumeLocale } from "./../data/resume-data";
+import { resumeData, resumeDataDe, resumeLabels } from "./../data/resume-data";
 import { Award } from "lucide-react";
 import Image from "next/image";
 import { Aside } from "./aside/aside";
