@@ -15,6 +15,14 @@
 # production
 /build
 
+# local reference repositories (never commit)
+/claude-skills/
+/cv-site/
+.agents/skills
+
+# private CV evidence and working notes
+/cv-work/
+
 # misc
 .DS_Store
 *.pem
@@ -26,6 +34,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel

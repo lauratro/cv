@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Laura Tronchin — CV Website
 
-## Getting Started
+A bilingual, responsive CV website built with Next.js and TypeScript. It
+presents Laura Tronchin's professional experience, skills, education, and
+projects in English and German, with downloadable ATS-oriented PDF versions.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- English and German CV routes with a persistent language switcher
+- Responsive layout for desktop and mobile screens
+- Structured experience, skills, education, and project sections
+- Localized page titles, descriptions, canonical URLs, and social metadata
+- Accessible semantic markup, keyboard focus states, and reduced-motion support
+- Dedicated print layouts and downloadable English and German PDFs
+- Clickable LinkedIn, GitHub, and project links in the generated PDFs
+- Custom 404 and error pages
+
+## Technology
+
+- [Next.js 13](https://nextjs.org/) with the App Router
+- [React 18](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/) utilities alongside custom CSS
+- [Lucide React](https://lucide.dev/) and
+  [React Icons](https://react-icons.github.io/react-icons/) for icons
+
+## Project structure
+
+```text
+src/
+├── app/
+│   ├── de/                    German CV route
+│   ├── pdf/[locale]/          Printable CV routes
+│   ├── resume-view.tsx        Shared bilingual CV presentation
+│   ├── globals.css            Site and print styling
+│   ├── layout.tsx             Root layout and shared metadata
+│   └── page.tsx               English CV route
+├── data/
+│   └── resume-data.ts         English and German CV content
+public/
+├── Laura-Tronchin-CV-ATS-EN.pdf
+├── Laura-Tronchin-Lebenslauf-ATS-DE.pdf
+└── profile-pic-small.png
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Requirements:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Node.js 18 or newer
+- npm
 
-## Learn More
+Install the dependencies and start the development server:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Available scripts
 
-## Deploy on Vercel
+| Command         | Purpose                                  |
+| --------------- | ---------------------------------------- |
+| `npm run dev`   | Start the local development server       |
+| `npm run build` | Create and validate the production build |
+| `npm run start` | Serve the production build               |
+| `npm run lint`  | Run the Next.js ESLint checks            |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Configuration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Set the public production URL in the deployment environment so canonical and
+alternate-language links use the correct domain:
+
+```env
+PUBLIC_SITE_URL=https://your-domain.example
+```
+
+Do not include a trailing slash. Local development falls back to
+`http://localhost:3000`.
+
+## Updating the CV
+
+The English and German content is maintained in
+[`src/data/resume-data.ts`](src/data/resume-data.ts). Changes to that file are
+shown by the website and the printable routes at `/pdf/en` and `/pdf/de`.
+
+The downloadable PDF files in `public/` are committed assets. After changing
+the CV, regenerate both files from the corresponding printable routes so the
+downloads remain synchronized with the website.
+
+## Deployment on Cloudflare Pages
+
+The application is exported as a static site to the `out/` directory and
+deployed by the GitHub Actions workflow in
+`.github/workflows/deploy-cloudflare-pages.yml`. Every push to `main` runs a
+clean production build and deploys it to Cloudflare Pages. The workflow can
+also be started manually from the Actions tab.
+
+Create a Cloudflare Pages project using **Direct Upload**, then configure the
+following repository secrets in GitHub under **Settings > Secrets and
+variables > Actions > Secrets**:
+
+| Secret | Purpose |
+| --- | --- |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account that owns the Pages project |
+| `CLOUDFLARE_API_TOKEN` | Scoped token with Cloudflare Pages edit permission |
+
+Configure these repository variables under **Settings > Secrets and variables
+> Actions > Variables**:
+
+| Variable | Value |
+| --- | --- |
+| `CLOUDFLARE_PROJECT_NAME` | Exact name of the Cloudflare Pages project |
+| `PUBLIC_SITE_URL` | The final public URL, without a trailing slash |
+
+The workflow uses Node.js 20 and sets `NODE_ENV=production` itself. Do not also
+enable Cloudflare's Git-based builds for the same project, otherwise a push may
+create two deployments.
+
+## Credits
+
+The CV content was developed and reviewed with the MIT-licensed
+[`cv-evidence-base` and `cv-and-human` skills](https://github.com/kevin-burns/claude-skills)
+created by Kevin Burns.
+The skills helped recover career evidence, improve recruiter-facing wording,
+and check ATS readability. They influenced the content rather than the
+application code and are not vendored in this repository.
+
+## License
+
+The source code is available under the [MIT License](LICENSE).
+
+Personal information, CV content, photographs, and personal branding contained
+in this repository are excluded from the license and may not be copied,
+distributed, or reused without explicit permission from Laura Tronchin.

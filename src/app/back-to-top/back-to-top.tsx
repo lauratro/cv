@@ -22,12 +22,13 @@ export const BackToTop = () => {
   }
 
   return (
-    <a
-      href="#top"
+    <button
+      type="button"
       className="back-to-top back-to-top-arrow"
       aria-label="Back to top"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
     >
       ↑
-    </a>
+    </button>
   );
 };

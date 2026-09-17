@@ -3,13 +3,12 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 export const resumeData = {
   name: "Laura Tronchin",
   initials: "LT",
-  role: "Full Stack Developer",
+  role: "Product-Oriented Full-Stack Engineer",
   location: "Berlin, Germany",
-  availability: "Open to Full Stack opportunities",
+  availability: "Open to product-oriented full-stack opportunities",
   email: "tronchinlaura@gmail.com",
-  phone: "015238568354",
   summary:
-    "Full Stack Developer with 4+ years of experience building production web and mobile applications in complex product environments. Strong experience with React, TypeScript, scalable frontend architectures, API design, and backend integrations.",
+    "Product-oriented full-stack engineer with frontend depth in React and TypeScript and a background in marketing. Progressed to primary implementation responsibility across six web applications and two React Native apps, delivering user-facing features, backend services and data workflows for learning platforms serving more than 50,000 registered users.",
   social: [
     {
       label: "LinkedIn",
@@ -28,21 +27,20 @@ export const resumeData = {
       company: "The Key Technology GmbH · Berlin",
       role: "Full Stack Developer",
       details: [
-        "Developed and maintained scalable product features across 6 web applications and 2 mobile apps within a complex, interconnected software ecosystem.",
-        "Built frontend functionality using React and React Native, translating product and business requirements into reliable, user-facing solutions.",
-        "Designed and implemented APIs and data structures with MongoDB and GraphQL, including indexing, performance optimization, and migration strategies for existing data.",
-        "Contributed to backend services and integrations, including Scala-based systems and internal and external API workflows supporting end-to-end product functionality.",
-        "Improved maintainability and long-term scalability through refactoring, iterative enhancements, and technical ownership of interconnected applications.",
-        "Built and optimized reusable UI components with strong attention to responsive design, usability, and consistent user experience.",
-        "Implemented and maintained unit tests for backend components to improve reliability, code quality, and maintainability.",
-        "Maintained and improved GitHub Actions CI/CD workflows, supporting automated deployments and release management for development and production environments.",
-        "Collaborated closely with product stakeholders, clients, and cross-functional teams to define requirements and deliver practical technical solutions.",
+        "Progressed to primary implementation responsibility during the final two years for a suite of six web applications and two React Native apps, excluding Salesforce integrations, in a two-developer team.",
+        "Prevented duplicate course identifiers across two Salesforce-connected learning platforms by challenging a database-local validation design and implementing a cross-platform gRPC uniqueness check.",
+        "Diagnosed recurring certificate failures in regulated medical education, tracing incorrect course identifiers and dates through historical course and submission data. Built MongoDB data converters and regenerated certificates for incidents typically involving about 2–50 users, sometimes more.",
+        "Built course permissions, progression and certification workflows for a learning platform with more than 50,000 registered users and approximately 500 courses, including eligibility rules, blocked-course states, expiring-certificate views and an administrator self-service reset for users blocked after three failed attempts.",
+        "Created assessment reporting for randomized question sets, mapping stored MongoDB answers back to course definitions to calculate answer exposure, correct responses and the most frequently selected wrong answers.",
+        "Rebuilt a production dashboard for a separate platform with approximately 500 courses, implementing supplied Figma designs and independently aggregating course, progress and certification data into views sorted by type, progress and expiry. Modelled course-state cards and a certificate carousel that widened its expiry window from 30 to 90 and 120 days when needed.",
+        "Reduced production dashboard load time from approximately seven seconds to two by improving MongoDB indexes. Added progressive skeleton states so each section rendered as soon as its independent query completed.",
+        "Reduced the path from the course dashboard to assessment questions from approximately four clicks to two after reviewing the navigation flow with the client.",
       ],
       highlights: [
         "React / React Native",
         "Scala / MongoDB",
-        "GraphQL / REST APIs",
-        "CI/CD",
+        "GraphQL / REST APIs / gRPC",
+        "GitHub Actions",
       ],
     },
     {
@@ -50,17 +48,19 @@ export const resumeData = {
       company: "Kooku Recruiting Partners · Berlin",
       role: "Frontend Web Developer Intern",
       details: [
-        "Implemented the frontend interface of the company's application using Vue.js and Tailwind CSS.",
-        "Collaborated closely with the design and backend teams in an agile environment.",
+        "Built the chart views for an internal recruiting analytics application, visualizing recruiter contact volumes, candidates reaching final interview rounds and candidate drop-off by hiring stage.",
+        "Translated designer-provided page designs into Vue.js and Tailwind CSS interfaces, including a client-filtering landing page with selectors and dropdowns; the delivered workflow and reporting views were used by the recruiting team.",
       ],
       highlights: ["Vue.js", "Tailwind CSS", "Agile collaboration"],
     },
+  ],
+  previousExperience: [
     {
       period: "09/2020 — 02/2021",
       company: "Conjuro Digital Marketing Agency · Berlin",
       role: "Freelance Web Designer",
       details: [
-        "Developed and maintained company websites using WordPress and CSS.",
+        "Built and maintained company websites with WordPress and CSS.",
       ],
       highlights: ["WordPress", "CSS", "Web design"],
     },
@@ -101,25 +101,56 @@ export const resumeData = {
       degree: "Master’s Degree in Marketing and Communication",
     },
   ],
-  skills: [
-    "React",
-    "React Native",
-    "Vue.js",
-    "TypeScript",
-    "Tailwind",
-    "PrimeReact",
-    "HTML",
-    "CSS",
-    "Scala",
-    "Node.js",
-    "NestJS",
-    "MongoDB",
-    "PostgreSQL",
-    "GraphQL",
-    "REST APIs",
-    "Git",
-    "GitHub Actions",
-    "Docker",
+  skillGroups: [
+    {
+      category: "Frontend",
+      description: "Web and mobile interfaces",
+      skills: [
+        "React",
+        "React Native",
+        "TypeScript",
+        "JavaScript",
+        "Vue.js",
+        "HTML",
+        "CSS",
+        "Tailwind CSS",
+        "PrimeReact",
+        "Mantine UI",
+        "Recharts",
+      ],
+    },
+    {
+      category: "Backend & data",
+      description: "Services, APIs and persistence",
+      skills: [
+        "Node.js",
+        "NestJS",
+        "Scala",
+        "MongoDB",
+        "PostgreSQL",
+        "Prisma",
+        "GraphQL",
+        "REST APIs",
+        "gRPC",
+      ],
+    },
+    {
+      category: "Quality & delivery",
+      description: "Testing and development workflow",
+      skills: [
+        "Git",
+        "GitHub Actions",
+        "Docker",
+        "Jest",
+        "Vitest",
+        "React Testing Library",
+      ],
+    },
+    {
+      category: "Applied AI",
+      description: "Tool-enabled product features",
+      skills: ["Google Gen AI SDK", "Gemini function calling"],
+    },
   ],
   languages: [
     "Italian · Native",
@@ -127,24 +158,172 @@ export const resumeData = {
     "German · B2",
     "Spanish · B1",
   ],
-  certifications: [
-    "Web 2.0 · Business Trend Academy Berlin",
-    "Online Marketing Manager · Business Trend Academy Berlin",
-  ],
+  certifications: [] as readonly { name: string; issuer: string }[],
   projects: [
     {
-      name: "Portfolio website",
+      name: "Personal Finance Tracker",
       description:
-        "A personal portfolio built with React, Gatsby, GraphQL and Netlify CMS.",
-      tags: ["React", "Gatsby", "GraphQL"],
-      href: "#",
-    },
-    {
-      name: "FindMyPet App",
-      description:
-        "A MERN stack application using Cloudinary and the Google Maps API.",
-      tags: ["MERN", "Cloudinary", "Google Maps API"],
-      href: "#",
+        "An authenticated React and NestJS application for tracking net worth and investments through yearly charts and a configurable dashboard whose widget layout persists for each user. Includes two predefined, user-scoped Gemini tools for financial analysis, frontend and backend tests, Docker Compose, and separate GitHub Actions CI workflows.",
+      tags: ["React", "NestJS", "PostgreSQL", "Prisma", "Gemini"],
+      href: "https://github.com/lauratro/personal-finance-tracker",
     },
   ],
 } as const;
+
+export type ResumeData = typeof resumeData;
+
+export const resumeDataDe = {
+  ...resumeData,
+  role: "Produktorientierte Full-Stack-Entwicklerin",
+  location: "Berlin, Deutschland",
+  availability: "Offen für produktorientierte Full-Stack-Positionen",
+  summary:
+    "Produktorientierte Full-Stack-Entwicklerin mit Frontend-Schwerpunkt in React und TypeScript sowie einem Hintergrund im Marketing. Übernahm die primäre Implementierungsverantwortung für sechs Webanwendungen und zwei React-Native-Apps und entwickelte Benutzerfunktionen, Backend-Services und Datenprozesse für Lernplattformen mit mehr als 50.000 registrierten Nutzenden.",
+  experience: [
+    {
+      period: "07.2022 – 06.2026",
+      company: "The Key Technology GmbH · Berlin",
+      role: "Full Stack Developer",
+      details: [
+        "Übernahm in den letzten zwei Jahren die primäre Implementierungsverantwortung für sechs Webanwendungen und zwei React-Native-Apps in einem zweiköpfigen Entwicklungsteam; Salesforce-Integrationen waren ausgenommen.",
+        "Verhinderte doppelte Kurskennungen in zwei an Salesforce angebundenen Lernplattformen, indem sie einen nur auf eine Datenbank begrenzten Validierungsentwurf hinterfragte und eine plattformübergreifende Eindeutigkeitsprüfung mit gRPC implementierte.",
+        "Analysierte wiederkehrende Zertifikatsfehler in der ärztlichen Fortbildung anhand historischer Kurs- und Einreichungsdaten. Entwickelte MongoDB-Datenkonverter und generierte Zertifikate für Vorfälle mit üblicherweise etwa 2 bis 50 betroffenen Nutzenden, teilweise mehr, neu.",
+        "Entwickelte Berechtigungs-, Fortschritts- und Zertifizierungsabläufe für eine Lernplattform mit mehr als 50.000 registrierten Nutzenden und rund 500 Kursen, einschließlich Zugangsregeln, Kurssperren, Ansichten für auslaufende Zertifikate und einer Admin-Selbstbedienungsfunktion zum Zurücksetzen des Fortschritts nach drei Fehlversuchen.",
+        "Erstellte Auswertungen für randomisierte Fragensätze und ordnete gespeicherte MongoDB-Antworten den Kursdefinitionen zu, um Anzeigehäufigkeit, korrekte Antworten und die am häufigsten gewählte falsche Antwort zu berechnen.",
+        "Überarbeitete ein produktives Dashboard für eine separate Plattform mit rund 500 Kursen, setzte bereitgestellte Figma-Entwürfe um und aggregierte eigenständig Kurs-, Fortschritts- und Zertifikatsdaten in nach Typ, Fortschritt und Ablauf sortierten Ansichten. Entwickelte Karten für unterschiedliche Kurszustände sowie ein Zertifikatskarussell, das sein Zeitfenster bei Bedarf von 30 auf 90 und 120 Tage erweiterte.",
+        "Reduzierte die Ladezeit des produktiven Dashboards durch optimierte MongoDB-Indizes von rund sieben auf zwei Sekunden. Ergänzte schrittweise Skeleton-Zustände, sodass jeder Bereich angezeigt wurde, sobald seine unabhängige Abfrage abgeschlossen war.",
+        "Reduzierte nach einer gemeinsamen Überarbeitung der Navigation mit dem Kunden den Weg vom Kurs-Dashboard zu den Prüfungsfragen von etwa vier auf zwei Klicks.",
+      ],
+      highlights: [
+        "React / React Native",
+        "Scala / MongoDB",
+        "GraphQL / REST APIs / gRPC",
+        "GitHub Actions",
+      ],
+    },
+    {
+      period: "12.2021 – 05.2022",
+      company: "Kooku Recruiting Partners · Berlin",
+      role: "Praktikantin Frontend-Webentwicklung",
+      details: [
+        "Entwickelte die Diagrammansichten für eine interne Recruiting-Analyseanwendung, die Kontaktzahlen der Recruiter, Kandidaten in finalen Interviewrunden und Ausstiege nach Auswahlphase visualisierte.",
+        "Setzte die vom Designer bereitgestellten Seitenentwürfe als Oberflächen mit Vue.js und Tailwind CSS um, darunter eine Startseite zur Kundenfilterung mit Auswahlfeldern und Dropdown-Menüs; der Filter-Workflow und die Auswertungsansichten wurden vom Recruiting-Team genutzt.",
+      ],
+      highlights: ["Vue.js", "Tailwind CSS", "Agile Zusammenarbeit"],
+    },
+  ],
+  previousExperience: [
+    {
+      period: "09.2020 – 02.2021",
+      company: "Conjuro Digital Marketing Agency · Berlin",
+      role: "Freiberufliche Webdesignerin",
+      details: ["Erstellte und pflegte Unternehmenswebsites mit WordPress und CSS."],
+      highlights: ["WordPress", "CSS", "Webdesign"],
+    },
+    {
+      period: "02.2019 – 01.2020",
+      company: "Plus Hostel and Hotel · Berlin",
+      role: "Reservierungsmanagerin",
+      details: [
+        "Verwaltete die Buchungssoftware und unterstützte das Community-Management.",
+      ],
+      highlights: ["Buchungssoftware", "Community-Management"],
+    },
+    {
+      period: "03.2015 – 01.2019",
+      company: "Weinwirtschaft in der Akademie der Künste · Berlin",
+      role: "Restaurant-Supervisorin und Servicekraft",
+      details: [
+        "Betreute Gäste, wickelte Kassenvorgänge ab und unterstützte die Veranstaltungskoordination.",
+      ],
+      highlights: ["Kundenservice", "Veranstaltungskoordination"],
+    },
+  ],
+  education: [
+    {
+      period: "03.2021 – 07.2021",
+      school: "Code Academy Berlin",
+      degree:
+        "Full Stack Web Development · React, Gatsby, GraphQL, Netlify CMS",
+    },
+    {
+      period: "02.2020 – 06.2020",
+      school: "Business Trend Academy · Berlin",
+      degree: "Online Marketing Manager · SEO, SEA, SMO, HTML, CSS",
+    },
+    {
+      period: "09.2010 – 02.2013",
+      school: "Universität Ca’ Foscari Venedig, Italien",
+      degree: "Masterabschluss in Marketing und Kommunikation",
+    },
+  ],
+  skillGroups: [
+    {
+      ...resumeData.skillGroups[0],
+      description: "Web- und Mobile-Oberflächen",
+    },
+    {
+      ...resumeData.skillGroups[1],
+      category: "Backend & Daten",
+      description: "Services, APIs und Datenhaltung",
+    },
+    {
+      ...resumeData.skillGroups[2],
+      category: "Qualität & Delivery",
+      description: "Tests und Entwicklungsworkflows",
+    },
+    {
+      ...resumeData.skillGroups[3],
+      category: "Angewandte KI",
+      description: "Toolgestützte Produktfunktionen",
+    },
+  ],
+  languages: [
+    "Italienisch · Muttersprache",
+    "Englisch · B2",
+    "Deutsch · B2",
+    "Spanisch · B1",
+  ],
+  projects: [
+    {
+      ...resumeData.projects[0],
+      description:
+        "Authentifizierte React- und NestJS-Anwendung zur Erfassung von Nettovermögen und Investitionen mit Jahresdiagrammen und einem konfigurierbaren Dashboard, dessen Widget-Anordnung pro Nutzer gespeichert wird. Enthält zwei vordefinierte, nutzerbezogene Gemini-Tools für Finanzanalysen, Frontend- und Backend-Tests, Docker Compose sowie separate GitHub-Actions-CI-Workflows.",
+    },
+  ],
+} as const;
+
+export const resumeLabels = {
+  en: {
+    htmlLang: "en",
+    rail: "Curriculum vitae / 2026",
+    navigation: "Resume navigation",
+    about: "About",
+    experience: "Experience",
+    resultsImpact: "Results & Impact",
+    previousExperience: "Previous experience",
+    previousExperienceIntro:
+      "Earlier customer-facing and digital roles that shaped my product perspective and communication skills.",
+    education: "Education",
+    skills: "Skills",
+    certifications: "Certifications",
+    projects: "Projects",
+  },
+  de: {
+    htmlLang: "de",
+    rail: "Lebenslauf / 2026",
+    navigation: "Lebenslauf-Navigation",
+    about: "Profil",
+    experience: "Berufserfahrung",
+    resultsImpact: "Ergebnisse & Wirkung",
+    previousExperience: "Frühere Berufserfahrung",
+    previousExperienceIntro:
+      "Frühere kundennahe und digitale Tätigkeiten, die meine Produktperspektive und Kommunikationsfähigkeit geprägt haben.",
+    education: "Ausbildung",
+    skills: "Kenntnisse",
+    certifications: "Zertifikate",
+    projects: "Projekte",
+  },
+} as const;
+
+export type ResumeLocale = keyof typeof resumeLabels;
