@@ -3,8 +3,13 @@ import {
   resumeDataDe,
   resumeLabels,
 } from "./../../../data/resume-data";
+import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: "Laura Tronchin – Full-Stack Engineer CV",
+};
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "de" }];
