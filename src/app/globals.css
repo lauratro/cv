@@ -1019,6 +1019,14 @@ h3 {
   line-height: 1.35;
   break-inside: avoid;
 }
+.cv-document-education {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.cv-document-projects {
+  break-before: page;
+  page-break-before: always;
+}
 .cv-document-extras {
   display: block;
 }

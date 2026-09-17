@@ -99,7 +99,7 @@ export default function PdfResumePage({
         ))}
       </section>
 
-      <section>
+      <section className="cv-document-projects">
         <h2>{labels.projects}</h2>
         {data.projects.map((project) => (
           <article className="cv-document-entry" key={project.name}>
@@ -111,7 +111,7 @@ export default function PdfResumePage({
         ))}
       </section>
 
-      <section>
+      <section className="cv-document-education">
         <h2>{labels.education}</h2>
         {data.education.map((item) => (
           <article className="cv-document-compact-entry" key={item.school}>

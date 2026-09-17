@@ -1,4 +1,0 @@
-interface:
-  display_name: "CV and Human"
-  short_description: "Truthfully tailor CVs for recruiters and ATS"
-  default_prompt: "Use $cv-and-human to tailor my evidence-backed CV for a target role while keeping every claim truthful."

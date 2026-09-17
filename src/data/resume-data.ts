@@ -48,7 +48,8 @@ export const resumeData = {
       company: "Kooku Recruiting Partners · Berlin",
       role: "Frontend Web Developer Intern",
       details: [
-        "Implemented application interfaces with Vue.js and Tailwind CSS in collaboration with design and backend colleagues.",
+        "Built the chart views for an internal recruiting analytics application, visualizing recruiter contact volumes, candidates reaching final interview rounds and candidate drop-off by hiring stage.",
+        "Translated designer-provided page designs into Vue.js and Tailwind CSS interfaces, including a client-filtering landing page with selectors and dropdowns; the delivered workflow and reporting views were used by the recruiting team.",
       ],
       highlights: ["Vue.js", "Tailwind CSS", "Agile collaboration"],
     },
@@ -205,7 +206,8 @@ export const resumeDataDe = {
       company: "Kooku Recruiting Partners · Berlin",
       role: "Praktikantin Frontend-Webentwicklung",
       details: [
-        "Implementierte Anwendungsoberflächen mit Vue.js und Tailwind CSS in Zusammenarbeit mit Design- und Backend-Kollegen.",
+        "Entwickelte die Diagrammansichten für eine interne Recruiting-Analyseanwendung, die Kontaktzahlen der Recruiter, Kandidaten in finalen Interviewrunden und Ausstiege nach Auswahlphase visualisierte.",
+        "Setzte die vom Designer bereitgestellten Seitenentwürfe als Oberflächen mit Vue.js und Tailwind CSS um, darunter eine Startseite zur Kundenfilterung mit Auswahlfeldern und Dropdown-Menüs; der Filter-Workflow und die Auswertungsansichten wurden vom Recruiting-Team genutzt.",
       ],
       highlights: ["Vue.js", "Tailwind CSS", "Agile Zusammenarbeit"],
     },

@@ -1,4 +1,0 @@
-interface:
-  display_name: "CV Evidence Base"
-  short_description: "Recover evidence and identify credible CV positioning"
-  default_prompt: "Use $cv-evidence-base to review my current CV, uncover missing career evidence, and identify credible target roles."
