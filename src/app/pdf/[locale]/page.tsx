@@ -29,12 +29,14 @@ export default function PdfResumePage({
         <div>
           <h1>{data.name}</h1>
           <p className="cv-document-role">{data.role}</p>
+          <p className="cv-document-location">{data.location}</p>
           <p className="cv-document-contact">
-            {data.location} · {data.email} ·{" "}
+            <a href={`mailto:${data.email}`}>{data.email}</a> ·{" "}
             <a href="https://linkedin.com/in/laura-tronchin">
               linkedin.com/in/laura-tronchin
             </a>{" "}
-            · <a href="https://github.com/lauratro">github.com/lauratro</a>
+            · <a href="https://github.com/lauratro">github.com/lauratro</a> ·{" "}
+            <a href={data.website}>cv.lauratronchin.com</a>
           </p>
           <p className="cv-document-languages">
             {data.languages.map((language, index) => {
