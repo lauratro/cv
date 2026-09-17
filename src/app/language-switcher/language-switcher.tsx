@@ -2,7 +2,6 @@
 
 import type { ResumeLocale } from "./../../data/resume-data";
 import Link from "next/link";
-import { useEffect } from "react";
 
 export function LanguageSwitcher({ locale }: { locale: ResumeLocale }) {
   return (
