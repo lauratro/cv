@@ -7,6 +7,7 @@ export const PdfVersions = () => {
         <a
           href="/Laura-Tronchin-CV-ATS-EN.pdf"
           download="Laura-Tronchin-CV-EN.pdf"
+          title="Laura Tronchin Product-Oriented Full-Stack Engineer"
         >
           <div className="social-item">
             <FaFilePdf className="social-icon" />
@@ -19,6 +20,7 @@ export const PdfVersions = () => {
         <a
           href="/Laura-Tronchin-Lebenslauf-ATS-DE.pdf"
           download="Laura-Tronchin-Lebenslauf-DE.pdf"
+          title="Laura Tronchin Produktorientierte Full-Stack-Entwicklerin"
         >
           <div className="social-item">
             <FaFilePdf className="social-icon" />
