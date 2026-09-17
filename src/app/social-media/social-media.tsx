@@ -1,4 +1,4 @@
-import { resumeData } from "@/data/resume-data";
+import { resumeData } from "./../../data/resume-data";
 export const SocialMedia = () => {
   return (
     <div className="social-row">

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ResumeLocale } from "@/data/resume-data";
+import type { ResumeLocale } from "./../../data/resume-data";
 import Link from "next/link";
 import { useEffect } from "react";
 
