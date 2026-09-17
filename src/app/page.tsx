@@ -1,4 +1,4 @@
-import { resumeData } from "@/data/resume-data";
+import { resumeData } from "./../data/resume-data";
 import type { Metadata } from "next";
 import { ResumeView } from "./resume-view";
 
