@@ -8,7 +8,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Laura Tronchin – Full-Stack Engineer CV",
+  title: "Laura Tronchin – Full-Stack Developer CV",
 };
 
 export function generateStaticParams() {
