@@ -1,4 +1,8 @@
-import { resumeData, resumeDataDe, resumeLabels } from "@/data/resume-data";
+import {
+  resumeData,
+  resumeDataDe,
+  resumeLabels,
+} from "./../../../data/resume-data";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -30,8 +34,7 @@ export default function PdfResumePage({
             <a href="https://linkedin.com/in/laura-tronchin">
               linkedin.com/in/laura-tronchin
             </a>{" "}
-            ·{" "}
-            <a href="https://github.com/lauratro">github.com/lauratro</a>
+            · <a href="https://github.com/lauratro">github.com/lauratro</a>
           </p>
           <p className="cv-document-languages">
             {data.languages.map((language, index) => {
@@ -76,14 +79,21 @@ export default function PdfResumePage({
       <section>
         <h2>{labels.experience}</h2>
         {data.experience.map((item) => (
-          <article className="cv-document-entry" key={`${item.company}-${item.period}`}>
+          <article
+            className="cv-document-entry"
+            key={`${item.company}-${item.period}`}
+          >
             <div className="cv-document-entry-heading">
-              <h3>{item.role} | {item.company}</h3>
+              <h3>
+                {item.role} | {item.company}
+              </h3>
               <span>{item.period}</span>
             </div>
             <h4 className="experience-subheading">{labels.resultsImpact}</h4>
             <ul>
-              {item.details.map((detail) => <li key={detail}>{detail}</li>)}
+              {item.details.map((detail) => (
+                <li key={detail}>{detail}</li>
+              ))}
             </ul>
           </article>
         ))}
@@ -92,8 +102,17 @@ export default function PdfResumePage({
       <section>
         <h2>{labels.previousExperience}</h2>
         {data.previousExperience.map((item) => (
-          <article className="cv-document-compact-entry" key={`${item.company}-${item.period}`}>
-            <div><strong>{item.role} | {item.company}</strong><br />{item.details[0]}</div>
+          <article
+            className="cv-document-compact-entry"
+            key={`${item.company}-${item.period}`}
+          >
+            <div>
+              <strong>
+                {item.role} | {item.company}
+              </strong>
+              <br />
+              {item.details[0]}
+            </div>
             <span>{item.period}</span>
           </article>
         ))}
@@ -115,7 +134,11 @@ export default function PdfResumePage({
         <h2>{labels.education}</h2>
         {data.education.map((item) => (
           <article className="cv-document-compact-entry" key={item.school}>
-            <div><strong>{item.school}</strong><br />{item.degree}</div>
+            <div>
+              <strong>{item.school}</strong>
+              <br />
+              {item.degree}
+            </div>
             <span>{item.period}</span>
           </article>
         ))}
@@ -126,7 +149,9 @@ export default function PdfResumePage({
           <div>
             <h2>{labels.certifications}</h2>
             {data.certifications.map((item) => (
-              <p key={item.name}><strong>{item.name}</strong>, {item.issuer}</p>
+              <p key={item.name}>
+                <strong>{item.name}</strong>, {item.issuer}
+              </p>
             ))}
           </div>
         </section>
