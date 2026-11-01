@@ -7,7 +7,7 @@ export const SocialMedia = () => {
 
         return (
           <div className="social-items mr-4" key={item.label}>
-            <a href={item.href}>
+            <a href={item.href} target="_blank" rel="noopener noreferrer">
               <div className="social-item">
                 <Icon className="social-icon" />
                 <p className="m-0 p-0">{item.label}</p>
