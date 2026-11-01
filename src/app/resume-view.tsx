@@ -208,6 +208,8 @@ export function ResumeView({
                     className="project-card"
                     href={project.href}
                     key={project.name}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <h3>
                       {project.name} <span aria-hidden="true">↗</span>
@@ -230,7 +232,13 @@ export function ResumeView({
               {data.email}
             </a>
             {data.social.map((item) => (
-              <a className="print-link" href={item.href} key={item.label}>
+              <a
+                className="print-link"
+                href={item.href}
+                key={item.label}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {item.label}
               </a>
             ))}
