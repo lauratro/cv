@@ -50,8 +50,9 @@ export function ResumeView({
         </header>
         <div className="language-container">
           <div>
-            {data.languages.map((language) => (
-              <span className="mr-4" key={language}>
+            {data.languages.map((language, index) => (
+              <span key={language}>
+                {index > 0 && " · "}
                 {language}
               </span>
             ))}
@@ -81,9 +82,6 @@ export function ResumeView({
                     <div>
                       <h3>{item.role}</h3>
                       <p className="company">{item.company}</p>
-                      <h4 className="experience-subheading">
-                        {labels.resultsImpact}
-                      </h4>
                       <ul className="experience-details">
                         {item.details.map((detail) => (
                           <li key={detail}>{detail}</li>

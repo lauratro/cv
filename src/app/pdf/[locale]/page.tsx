@@ -29,7 +29,7 @@ export default function PdfResumePage({
   const labels = resumeLabels[locale];
 
   return (
-    <main className="cv-document">
+    <main className={`cv-document${locale === "de" ? " cv-document-de" : ""}`}>
       <header className="cv-document-header">
         <div>
           <h1>{data.name}</h1>
@@ -44,17 +44,12 @@ export default function PdfResumePage({
             <a href={data.website}>cv.lauratronchin.com</a>
           </p>
           <p className="cv-document-languages">
-            {data.languages.map((language, index) => {
-              const [name, level] = language.split(" · ");
-
-              return (
-                <span key={language}>
-                  {index > 0 && " · "}
-                  <strong>{name}</strong>
-                  {level && ` · ${level}`}
-                </span>
-              );
-            })}
+            {data.languages.map((language, index) => (
+              <span key={language}>
+                {index > 0 && " · "}
+                <strong>{language}</strong>
+              </span>
+            ))}
           </p>
         </div>
         <Image
@@ -96,7 +91,6 @@ export default function PdfResumePage({
               </h3>
               <span>{item.period}</span>
             </div>
-            <h4 className="experience-subheading">{labels.resultsImpact}</h4>
             <ul>
               {item.details.map((detail) => (
                 <li key={detail}>{detail}</li>

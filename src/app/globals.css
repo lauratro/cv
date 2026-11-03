@@ -315,7 +315,7 @@ p,
 }
 .content-grid {
   display: grid;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 .content-section {
   display: grid;
@@ -482,21 +482,12 @@ h3 {
   font-size: 0.94rem;
   line-height: 1.65;
 }
-.experience-subheading {
-  margin: 0 0 0.7rem;
-  color: var(--coral);
-  font:
-    700 0.66rem/1.2 "Courier New",
-    monospace;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
 .experience-details li {
   position: relative;
   padding-left: 1.35rem;
 }
 .experience-details li + li {
-  margin-top: 0.65rem;
+  margin-top: 0.85rem;
 }
 .experience-details li::before {
   content: "";
@@ -992,16 +983,6 @@ h3 {
   font-size: 0.67rem;
   font-weight: 700;
 }
-.cv-document .experience-subheading {
-  margin: 0.3rem 0 0;
-  color: #28717a;
-  font:
-    700 0.61rem/1.2 Arial,
-    Helvetica,
-    sans-serif;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-}
 .cv-document ul {
   list-style: disc outside;
   margin: 0.3rem 0 0;
@@ -1090,6 +1071,83 @@ h3 {
     margin: 0;
     padding: 0;
     box-shadow: none;
+    font-size: 10pt;
+    line-height: 1.35;
+  }
+  .cv-document section {
+    margin-top: 1.05rem;
+  }
+  .cv-document h2 {
+    margin-bottom: 0.5rem;
+    font-size: 10.5pt;
+  }
+  .cv-document h3 {
+    font-size: 10.5pt;
+  }
+  .cv-document-location,
+  .cv-document-contact,
+  .cv-document-entry-heading span,
+  .cv-document-compact-entry span {
+    font-size: 9pt;
+  }
+  .cv-document-languages {
+    font-size: 10pt;
+  }
+  .cv-document p,
+  .cv-document li,
+  .cv-document-compact-entry {
+    font-size: 10pt;
+    line-height: 1.35;
+  }
+  .cv-document-entry {
+    margin-bottom: 0.9rem;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .cv-document li {
+    margin-top: 0.35rem;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .cv-document h2,
+  .cv-document-entry-heading,
+  .cv-document-compact-entry {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .cv-document-compact-entry {
+    margin-bottom: 0.55rem;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .cv-document-projects {
+    break-before: auto;
+    page-break-before: auto;
+  }
+  .cv-document > section:nth-of-type(3) .cv-document-entry + .cv-document-entry {
+    margin-bottom: 1.1rem;
+  }
+  .cv-document > section:nth-of-type(3)
+    .cv-document-entry + .cv-document-entry li {
+    margin-top: 0.4rem;
+    font-size: 10.5pt;
+    line-height: 1.4;
+  }
+  .cv-document > section:nth-of-type(n + 4) {
+    margin-top: 1.2rem;
+  }
+  .cv-document > section:nth-of-type(4) .cv-document-compact-entry {
+    margin-bottom: 0.75rem;
+    font-size: 10.5pt;
+    line-height: 1.4;
+  }
+  .cv-document > section:nth-of-type(5) p,
+  .cv-document > section:nth-of-type(6) .cv-document-compact-entry {
+    font-size: 10.5pt;
+    line-height: 1.4;
+  }
+  .cv-document > section:nth-of-type(5) .cv-document-entry {
+    margin-bottom: 0.8rem;
   }
   .side-rail,
   .top-nav,
