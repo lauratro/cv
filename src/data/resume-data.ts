@@ -29,6 +29,7 @@ export const resumeData = {
       role: "Full Stack Developer",
       details: [
         "Owned features end-to-end as primary developer for six web applications and two React Native apps in a two-developer team, from clarifying requirements with the client through implementation, testing and release.",
+        "Developed and maintained React Native applications, updated plugins, and independently managed Android app releases through Google Play Console.",
         "Built bidirectional Salesforce synchronization for users, modules and learning results across gRPC-connected Scala backend services, covering create, update and delete flows, including a cross-platform uniqueness check that prevented duplicate module identifiers.",
         "Developed integration tests across numerous Scala/Play backend services using ScalaTest, Guice and MongoDB, covering CRUD operations, business logic and error handling.",
         "Investigated and resolved certificate errors in regulated medical education, tracing root causes through historical course and submission data, correcting affected records and regenerating certificates.",
@@ -206,6 +207,7 @@ export const resumeDataDe = {
       role: "Full Stack Developer",
       details: [
         "Verantwortete Funktionen durchgängig als Hauptentwicklerin für sechs Webanwendungen und zwei React-Native-Apps in einem zweiköpfigen Team – von der Klärung der Anforderungen mit dem Kunden über Implementierung und Tests bis zum Release.",
+        "Entwicklung und Wartung von React-Native-Anwendungen, Aktualisierung von Plugins sowie eigenständige Veröffentlichung von Android-Apps über die Google Play Console.",
         "Entwickelte eine bidirektionale Salesforce-Synchronisation für Nutzende, Module und Lernergebnisse über gRPC-verbundene Scala-Backend-Services, einschließlich Erstellungs-, Aktualisierungs- und Löschprozessen sowie einer plattformübergreifenden Eindeutigkeitsprüfung gegen doppelte Modulkennungen.",
         "Entwickelte Integrationstests für zahlreiche Scala/Play-Backend-Services mit ScalaTest, Guice und MongoDB zur Prüfung von CRUD-Operationen, Geschäftslogik und Fehlerbehandlung.",
         "Analysierte und behob Zertifikatsfehler in der regulierten medizinischen Fortbildung, ermittelte die Ursachen anhand historischer Kurs- und Einreichungsdaten, korrigierte die betroffenen Datensätze und generierte die Zertifikate neu.",
