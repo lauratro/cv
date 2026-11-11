@@ -184,7 +184,7 @@ export const resumeData = {
     {
       name: "Personal Finance Tracker",
       description:
-        "An authenticated React and NestJS application for tracking net worth and investments through yearly charts and a configurable dashboard whose widget layout persists for each user. Includes two predefined, user-scoped Gemini tools for financial analysis, frontend and backend tests, Docker Compose, and separate GitHub Actions CI workflows.",
+        "An authenticated React and NestJS application using PostgreSQL and Prisma to track net worth and investments through yearly charts and a configurable dashboard whose widget layout persists for each user. Includes two predefined, user-scoped Gemini tools for financial analysis, frontend and backend tests, Docker Compose, and separate GitHub Actions CI workflows.",
       tags: ["React", "NestJS", "PostgreSQL", "Prisma", "Gemini"],
       href: "https://github.com/lauratro/personal-finance-tracker",
     },
@@ -327,7 +327,7 @@ export const resumeDataDe = {
     {
       ...resumeData.projects[0],
       description:
-        "Authentifizierte React- und NestJS-Anwendung zur Erfassung von Nettovermögen und Investitionen mit Jahresdiagrammen und einem konfigurierbaren Dashboard, dessen Widget-Anordnung pro Nutzer gespeichert wird. Enthält zwei vordefinierte, nutzerbezogene Gemini-Tools für Finanzanalysen, Frontend- und Backend-Tests, Docker Compose sowie separate GitHub-Actions-CI-Workflows.",
+        "Authentifizierte React- und NestJS-Anwendung mit PostgreSQL und Prisma zur Erfassung von Nettovermögen und Investitionen mit Jahresdiagrammen und einem konfigurierbaren Dashboard, dessen Widget-Anordnung pro Nutzer gespeichert wird. Enthält zwei vordefinierte, nutzerbezogene Gemini-Tools für Finanzanalysen, Frontend- und Backend-Tests, Docker Compose sowie separate GitHub-Actions-CI-Workflows.",
     },
   ],
 } as const;
