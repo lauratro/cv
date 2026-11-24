@@ -175,8 +175,8 @@ export const resumeData = {
   ],
   languages: [
     "Italian (native)",
-    "English (B2)",
-    "German (B2)",
+    "English (fluent, B2)",
+    "German (fluent, B2 – working language)",
     "Spanish (B1)",
   ],
   certifications: [] as readonly { name: string; issuer: string }[],
@@ -319,8 +319,8 @@ export const resumeDataDe = {
   ],
   languages: [
     "Italienisch (Muttersprache)",
-    "Englisch (B2)",
-    "Deutsch (B2)",
+    "Englisch (fließend, B2)",
+    "Deutsch (fließend, B2 – Arbeitssprache)",
     "Spanisch (B1)",
   ],
   projects: [
